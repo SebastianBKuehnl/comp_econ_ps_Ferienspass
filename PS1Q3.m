@@ -1,13 +1,13 @@
 %% Set up the grid
 
-clear all;
+clear;
 clc;
 
 Board=zeros(15,15); 
 Iteration_Count=0;
 %110 White (1 indicates white)
 i=1;
-while i<110
+while i<111
 
 Col = randi(size(Board, 2));
 Row = randi(size(Board, 1));
@@ -21,7 +21,7 @@ end
 %110 Black (2 indicates black)
 
 j=1;
-while j<110
+while j<111
 
 Col = randi(size(Board, 2));
 Row = randi(size(Board, 1));
@@ -68,19 +68,40 @@ for i=1:15
     for j=1:15
        Self=Board(i,j);
        %Evaluate at Borders
-       if i==1||j==1||i==15||j==15
+       %if i==1||j==1||i==15||j==15
            
           % if i==1
+          
+      
           %Elseif for every border possibility     
            
-       else
+      % else
        %Evaluate interior
        
            %Get neighboring values
+           if i==1
+           Upper_N=0;
+           else
            Upper_N=Board(i-1,j);
+           end
+           
+           if i==15
+           Lower_N=0;
+           else
            Lower_N=Board(i+1,j);
-           Left_N=Board(i,j+1);
+           end
+           
+           if j==1
+            Left_N=0;
+           else
+           Left_N=Board(i,j-1);
+           end
+           
+           if j==15
+           Right_N=0;
+           else
            Right_N=Board(i,j+1);
+           end
 
            %Compare to neighbors
            Neigh=zeros(4,1);
@@ -103,7 +124,7 @@ for i=1:15
           end
            
        
-       end
+       %end
     end
 end
 
