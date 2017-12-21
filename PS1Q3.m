@@ -32,14 +32,14 @@ else
 end
 end
 
+%Plot situation after zero iterations
 figure
 subplot(2,2,1)
 Plot_0=imagesc(Board);
+title('Initial Setup')
 
 for ij=1:45
 %% Spot unoccupied houses
-
-
 
 Non_Occupied=zeros(5,2);
 Non_Index=1;
@@ -67,18 +67,10 @@ Movers_Count=0;
 for i=1:15
     for j=1:15
        Self=Board(i,j);
-       %Evaluate at Borders
-       %if i==1||j==1||i==15||j==15
+       if Self ~= 0 %Check if the considered house is actually occupied
            
-          % if i==1
-          
-      
-          %Elseif for every border possibility     
-           
-      % else
-       %Evaluate interior
+       %If possible, get neighbor values, alternatively, set equal to zero
        
-           %Get neighboring values
            if i==1
            Upper_N=0;
            else
@@ -92,7 +84,7 @@ for i=1:15
            end
            
            if j==1
-            Left_N=0;
+           Left_N=0;
            else
            Left_N=Board(i,j-1);
            end
@@ -104,16 +96,12 @@ for i=1:15
            end
 
            %Compare to neighbors
+           
            Neigh=zeros(4,1);
            Neigh(1,1)=double((Self==Upper_N));
            Neigh(2,1)=double((Self==Lower_N));
            Neigh(3,1)=double((Self==Left_N));
            Neigh(4,1)=double((Self==Right_N));
-           
-           %Same_Upper=double((Self==Upper_N));
-           %Same_Lower=double((Self==Lower_N));
-           %Same_Left=double((Self==Left_N));
-           %Same_Right=double((Self==Right_N));
            
            %at least 35% must be equal to not move
            Neigh_Eval=sum(Neigh)/4;
@@ -123,8 +111,8 @@ for i=1:15
               Movers_Count=Movers_Count+1;
           end
            
-       
-       %end
+       end
+      
     end
 end
 
@@ -134,12 +122,12 @@ Allowed_Movers=zeros(5,1);
 Allowed_Movers_Pos=zeros(5,2);
 Want_to_Move=zeros(Movers_Count,2);
 k=1;
+
 for i=1:15
     for j=1:15
        if Movers_Location(i,j)==1 
            %Store to movers
-           
-      
+
            Want_to_Move(k,1)=i;
            Want_to_Move(k,2)=j;
            
@@ -150,10 +138,20 @@ end
 
 %Pick five movers
 
-for i=1:5
-Allowed_Movers(i,1) = randi(Movers_Count);
-end
+m=1;
 
+if Movers_Count>=5
+while m<6
+    New_Mover=randi(Movers_Count);
+    if ismember(New_Mover,Allowed_Movers)==0
+        Allowed_Movers(m,1)=New_Mover;
+        m=m+1;
+    end
+end
+else
+    Error_Msg=['Not enough households want to move in iteration ' num2str(ij) '. Please try again (If necessary multiple times).'];
+    error(Error_Msg);
+end
 for i=1:5
     Allowed_Movers_Pos(i,1)=Want_to_Move(Allowed_Movers(i,1),1);
     Allowed_Movers_Pos(i,2)=Want_to_Move(Allowed_Movers(i,1),2);
@@ -200,8 +198,7 @@ elseif ij== 30
 elseif ij== 45
     subplot(2,2,4)
     Plot_3=imagesc(Board);
-    title(Title)
-        
+    title(Title)       
 end
-        
+
 end
