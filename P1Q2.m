@@ -11,6 +11,7 @@ LogGreece=log(Greece);
 
 %% Part 2 - Applying HP filter
 
+%This version requires machine learning and statistics toolbox
 smoothing = 1600; %unecessary since it is the default value of the function but done for sake of completeness
 TrendGermany = hpfilter(LogGermany,smoothing);
 TrendGreece = hpfilter(LogGreece,smoothing);
