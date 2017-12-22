@@ -141,18 +141,19 @@ end
 m=1;
 
 if Movers_Count>=5
-while m<6
+    Movers_Counter=6;
+else
+    Movers_Counter=Movers_Count+1;
+end
+while m<Movers_Counter
     New_Mover=randi(Movers_Count);
     if ismember(New_Mover,Allowed_Movers)==0
         Allowed_Movers(m,1)=New_Mover;
         m=m+1;
     end
 end
-else
-    Error_Msg=['Not enough households want to move in iteration ' num2str(ij) '. Please try again (If necessary multiple times).'];
-    error(Error_Msg);
-end
-for i=1:5
+
+for i=1:Movers_Counter-1
     Allowed_Movers_Pos(i,1)=Want_to_Move(Allowed_Movers(i,1),1);
     Allowed_Movers_Pos(i,2)=Want_to_Move(Allowed_Movers(i,1),2);
 end
@@ -163,9 +164,9 @@ Moves_To=zeros(5,2);
 Unoccupied_NowOccupied=zeros(5,1);
 i=1;
 
-while i<6
+while i<Movers_Counter
     
-    Row=randi(5);
+    Row=randi(Movers_Counter-1);
     if ismember(Row,Unoccupied_NowOccupied)==0
     Unoccupied_NowOccupied(i,1)=Row;
      
@@ -179,7 +180,7 @@ end
 %Set new location of selected movers to zero, set unoccupied houses to new
 %values
 
-for i=1:5
+for i=1:Movers_Counter-1
     Board(Non_Occupied(i,1),Non_Occupied(i,2))=Board(Allowed_Movers_Pos(i,1),Allowed_Movers_Pos(i,2));
     Board(Allowed_Movers_Pos(i,1),Allowed_Movers_Pos(i,2))=0;
 end
