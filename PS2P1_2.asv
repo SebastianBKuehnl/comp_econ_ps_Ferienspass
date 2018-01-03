@@ -1,0 +1,24 @@
+%PS2 P1 2.
+%2. first function 
+function y=ffunction(t)
+    y=t^3+4-1/t;
+end   
+%2. second function 
+function z=fffunction(v)
+    z=-exp(-v)+exp(-v^2);
+end    
+%get an idea how the function looks like, such that values can be guessed
+g=zeros(20);
+for i=1:20;
+    g(i)=ffunction(i/40);
+    h(i)=fffunction(i);
+end
+xaxis=1/40:1/40:0.5;
+plot(xaxis,g,xaxis,h,'-.r',xaxis,zeros(size(xaxis)));
+
+%do bisection
+e=0.0001;
+d=0.0001;
+x_l=0.01;
+x_h=0.7;
+a=bisec(x_l,x_h,e,d)
