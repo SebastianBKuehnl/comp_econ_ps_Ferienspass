@@ -13,12 +13,22 @@ e=0.0001;
 d=0.0001;
 x_l=-5;
 x_h=0.7;
-a=bisec(x_l,x_h,e,d)
+fun=@ffunction;
+a=bisec(x_l,x_h,e,fun);
 x_l=0.01;
 x_h=0.7;
-b=bisec(x_l,x_h,e,d)
+b=bisec(x_l,x_h,e,fun);
 x_l=0.1;
 x_h=100;
-c=bisecc(x_l,x_h,e,d)
+fun=@fffunction;
+c=bisec(x_l,x_h,e,fun);
+x_l=0;
+x_h=100;
+fun=@fffunction;
+d=bisec(x_l,x_h,e,fun);
+disp(a)
+disp(b)
+disp(c)
+disp(d)
 
 
