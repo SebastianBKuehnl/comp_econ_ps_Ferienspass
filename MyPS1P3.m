@@ -33,7 +33,7 @@ plots=plots+1;
 figure
 subplot(2,2,plots)
 imagesc(Hood)
-title('Initial Setup, blue is black, green is white, red is unocc')
+title({'Initial Setup, blue is black,';' green is white, red is unoccupied'})
 colorbar
 iterations=0;
 %start iteration
@@ -79,7 +79,8 @@ end
 Mover=Mover(2:end,:);
 Free=Free(2:end,:);
 %move into new house
-for k=1:length(Mover) %in this loop there is an error if movers<3
+sz = size(Mover);
+for k=1:sz(1,1) %in this loop there is an error if movers<3
     newpos=unidrnd(length(Free),1,1);
     Hood(Free(newpos,1),Free(newpos,2))=Mover(k,3);
     Free(newpos,:)=[];
@@ -93,7 +94,7 @@ if (iterations==30) || (iterations==15)
 plots=plots+1;
 subplot(2,2,plots)
 imagesc(Hood)
-title(['After' num2str(iterations) ' iterations'])
+title(['After ' num2str(iterations) ' iterations'])
 colorbar
 end
 end
