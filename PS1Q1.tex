@@ -2,11 +2,18 @@
 \usepackage{amsmath}
 \usepackage{MnSymbol}
 \usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage[autolinebreaks]{mcode}  
 
 \begin{document}
+\begin{center}
+\textbf{Answers to Problem Set 1\\
+Group name: Ferienspass}
+\end{center}
+
 \section{Question 1}
 
-\subsection{1.1}
+\subsection{}
 A market equilibrium occurs when markets clear. This implies no excess demand ($D$) or supply ($S$) of Goods. Thus, $q_D = q_S$. This only occurs when $p_D = p_S$ (the market clearing price prevails).
 \begin{center} $p_D = p_S$ \end{center}
 using
@@ -19,7 +26,7 @@ using
 Since $q_D = q_S$ holds, this can be simplified even further 
  \begin{equation} \label{First_One}0 =(b+d)*q-(a-c)\end{equation} $\blacksquare$
  
-\subsection{1.2}
+\subsection{}
 
 Analytical computation of the equilibrium allocation. Alternative approach of previous question used. First, set quantities equal, $q_D = q_S$ and calculate the resulting equilibrium price $p^{*}$. By inserting the equilibrium price into both quantity functions, we get the equilibrium quantity and can show that $q_D = q_S$ in fact holds.
 \begin{center} $q_D = q_S $ \end{center}
@@ -39,7 +46,7 @@ which can also be computed by rearranging \eqref{First_One}:
 \begin{center}$(a-c) =(b+d)*q$ \end{center}
 \begin{center}$\frac{a-c}{b+d}=q$ \end{center}
 
-\subsection{1.3}
+\subsection{}
 The LU decomposition. The application of this procedure can be found in the MATLAB file PS1Q1.m.\\
 \begin{enumerate}
 \item Rearrange the equations given in the problem set so that, when solving for x, we solve for $x = [p, q]'$.
@@ -135,4 +142,44 @@ which gives
  \begin{center}$ p = \frac{ad+bc}{b+d} $ \end{center}
 \end{enumerate}
 \end{enumerate}
+
+\newpage
+\subsection{}
+
+\lstinputlisting[linerange={1-20}]{PS1Q1.m}
+LU Result: The market clearing price 2.3333 clears the market at the quantity 1.3333!
+
+
+\subsection{}
+
+\paragraph{Convergent case}
+
+\lstinputlisting[linerange={21-32, 42-76}]{PS1Q1.m}
+Gauss-Seidel Iteration Result (using quantity as initial guess): The market clearing price 2.3357 clears the market at the quantity 1.3357 after 9 iterations!\\[2em]
+
+\lstinputlisting[linerange={78-117}]{PS1Q1.m}
+Gauss-Seidel Iteration Result (using price as initial guess): The market clearing price 2.3312 clears the market at the quantity 1.3312 after 11 iterations!\\[2em]
+
+\lstinputlisting[linerange={119-167}]{PS1Q1.m}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.99\textwidth]{figure1}
+\end{figure}
+
+\paragraph{Non-convergent case}
+
+\lstinputlisting[linerange={169-177, 187-235}]{PS1Q1.m}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.8\textwidth]{figure2}
+\end{figure}
+
+
+\subsection{}
+\lstinputlisting[linerange={238-311}]{PS1Q1.m}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.99\textwidth]{figure3}
+\end{figure}
+
 \end{document}
