@@ -6,6 +6,8 @@ function [ r ] = mybisection( fun, a, b, maxiter, eps_step, eps_abs )
   
   
   % Check requirements: 
+  if (maxiter<=0) || (eps_step<0) || (eps_abs<0)
+    error('input parameters invalid');
   %% fun at a or b already zero? 
   if ( fun(a) == 0 )
     r = a;
