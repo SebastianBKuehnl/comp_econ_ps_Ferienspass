@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{MnSymbol}
+\usepackage{graphicx}
 \usepackage{wasysym}
 \usepackage{listings}
 \usepackage{color}
@@ -8,7 +9,13 @@
 \definecolor{mylilas}{RGB}{170,55,241}
 \begin{document}
 \begin{center}
-\LARGE \bfseries{Problem Set 2} 
+\LARGE \bfseries{Answers to Problem Set 2}\\
+ Group name: Ferienspass\vspace{.5cm}\\
+ \normalsize \normalfont
+  Sebastian K\"uhnl: 5642348\\
+  Alexander D\"uck (as: reebyte): 5504077\\
+  Patrick (as: paddyblank): \\
+  Christian: 
 \end{center}
 \normalsize	
 	\lstset{language=Matlab,%
@@ -29,7 +36,7 @@
 	}
 \section*{Question 1}
 \subsection*{1.1}
-\lstinputlisting{bisec.m}
+\lstinputlisting{mybisection.m}
 \subsection*{1.2}
 \lstinputlisting{ffunction.m}
 \lstinputlisting{fffunction.m}
@@ -57,11 +64,12 @@ Since $q_D = q_S$ holds, this can be written as
  \rightarrow q*&=1.112&&\text{insert into: }p=3-0.5q\\
  \rightarrow p*&=2.444&& 
  \end{align*}
-\lstinputlisting{difference.m}
-\lstinputlisting{PS2P1_3.m}
 \lstinputlisting{demand.m}
 \lstinputlisting{supply.m}
-
+\lstinputlisting{difference.m}
+\lstinputlisting{PS2P1_3.m}
 \section*{Question 2}
 \lstinputlisting{PS2P2.m}
+\vspace{1cm}
+\includegraphics{Table.png}
 \end{document}
