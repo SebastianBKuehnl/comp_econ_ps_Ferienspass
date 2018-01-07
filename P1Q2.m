@@ -58,23 +58,25 @@ Y_GER_trend_OLS=exp(Yhat_GER);
 Y_GRE_trend_HP=exp(TrendGreece);
 Y_GRE_trend_OLS=exp(Yhat_GRE);
 
-Y_Gap_GER_HP=Germany-Y_GER_trend_HP;
+Y_Gap_GER_HP=Germany-transpose(Y_GER_trend_HP);
 Y_Gap_GER_OLS=Germany-Y_GER_trend_OLS;
 
-Y_Gap_GRE_HP=Greece-Y_GRE_trend_HP;
+Y_Gap_GRE_HP=Greece-transpose(Y_GRE_trend_HP);
 Y_Gap_GRE_OLS=Greece-Y_GRE_trend_OLS;
 
 %% Part 5 - Plot
 
 figure
 plot(Time,LogGermany,Time,Yhat_GER,Time,TrendGermany);
+legend('log(Germany)','output gap GER','trend GER');
 
 figure
 plot(Time,LogGreece,Time,Yhat_GRE,Time,TrendGreece);
+legend('log(Greece)','output gap GREECE','trend GREECE');
 
 figure
 plot(Time,LogGermany,Time,Yhat_GER,Time,TrendGermany,Time,LogGreece,Time,Yhat_GRE,Time,TrendGreece);
-
+legend('log(Germany)','output gap GER','trend GER','log(Greece)','output gap GREECE','trend GREECE');
 
 
 
