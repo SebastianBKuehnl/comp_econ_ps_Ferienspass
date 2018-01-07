@@ -4,31 +4,30 @@ clear;
 i=1:300;
 g=ffunction(i-40/40);
 h=fffunction(i-40);
+figure
 plot(g);
-hold on
+title('Function 1');
+figure
 plot(h,'--r');
-hold off
+title('Function 2');
 %do bisection
 e=0.0001;
 d=0.0001;
 x_l=-5;
 x_h=0.7;
 fun=@ffunction;
-a=bisec(x_l,x_h,e,fun);
+a=mybisec(fun,x_l,x_h,e,d);
+disp(a)
 x_l=0.01;
 x_h=0.7;
 b=bisec(x_l,x_h,e,fun);
+disp(b)
 x_l=0.1;
 x_h=100;
-fun=@fffunction;
-c=bisec(x_l,x_h,e,fun);
+fan=@fffunction;
+c=mybisec(fan,x_l,x_h,e,d);
+disp(c)
 x_l=0;
 x_h=100;
-fun=@fffunction;
 d=bisec(x_l,x_h,e,fun);
-disp(a)
-disp(b)
-disp(c)
 disp(d)
-
-
