@@ -4,6 +4,8 @@
 \usepackage{wasysym}
 \usepackage{graphicx}
 \usepackage{float}
+
+   \usepackage[numbered,framed]{matlab-prettifier}
 \usepackage[export]{adjustbox}
 \begin{document}
 \begin{center}
@@ -99,33 +101,128 @@ Thus, the solution vector becomes
 The reasoning behind this it that if an additional unit of human capital yields more than an additional unit of physical capital, and lasts longer than it as well, and investment in human capital is preferred over an investment in physical capital. This goes on this way until a point is reached, where an investment in human capital has the same marginal-product-to-depreciation-rate as physical capital. The investment in the two goods will increase such that their levels always give the same marginal-product-to-depreciation-rate (which implies a constant ratio of human to physical capital (which can be seen in the graph as well)) until the entire income is spent. At this point, the balanced growth path level is reached.
 \section{Question 3}
 \section{Question 4}
-Given the constraints, the problem can be reformulated as
-\begin{equation}
-\max \sum_{t=0}^T \beta^t \frac{\left( a_t (1+r) + w_t -a_{t+1} \right )^{1- \theta}-1}{1- \theta}
-\end{equation}
-which can then be stated as a Bellman equation, starting from the decision in period T
-\begin{equation}
-\nu_T = \max_{a_{T+1}} \left( \frac{\left( a_T (1+r) + w_T -a_{T+1} \right )^{1- \theta}-1}{1- \theta} + \beta \times 0 \right)
-\end{equation}
-giving the policy function
-\begin{equation}
-a_{T+1} = 0
-\end{equation}
-which implies
-\begin{equation}
-\nu_T =   \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  .
-\end{equation}
-This result can now be used in the value function one period before the final period
+%Given the constraints, the problem can be reformulated as
+%\begin{equation}
+%\max \sum_{t=0}^T \beta^t \frac{\left( a_t (1+r) + w_t -a_{t+1} \right )^{1- \theta}-1}{1- \theta}
+%\end{equation}
+%which can then be stated as a Bellman equation, starting from the decision in period T
+%\begin{equation}
+%\nu_T = \max_{a_{T+1}} \left( \frac{\left( a_T (1+r) + w_T -a_{T+1} \right )^{1- \theta}-1}{1- \theta} + \beta \times 0 \right)
+%\end{equation}
+%giving the policy function
+%\begin{equation}
+%a_{T+1} = 0
+%\end{equation}
+%which implies
+%\begin{equation}
+%\nu_T =   \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  .
+%\end{equation}
+%This result can now be used in the value function one period before the final period
+%\begin{align}
+%\nu_{T-1} &= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta  \nu_T  \right) \\
+%&= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  \right)
+%\end{align}
+%Maximizing wrt $a_T$:
+%\begin{align}
+%\frac{\partial \nu_{T-1}}{\partial a_{T}} = \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} (-1) +  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) = 0 \\
+% \Leftrightarrow  \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} =  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) 
+%\end{align}
+\subsection{Analytical Solution}
+From the Euler equation and the budget constraint we get that
 \begin{align}
-\nu_{T-1} &= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta  \nu_T  \right) \\
-&= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  \right)
+c_t &=\left( \beta (1+r) \right)^{- \frac{1}{\theta}} c_{t+1} \\
+\sum c_t \left(  \frac{1}{1+r} \right)^{t} &= \sum w_t \left(  \frac{1}{1+r} \right)^{t} + a_0
 \end{align}
-Maximizing wrt $a_T$:
+Since we can express all $c_t$ as a function of $c_0$, we can write
 \begin{align}
-\frac{\partial \nu_{T-1}}{\partial a_{T}} = \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} (-1) +  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) = 0 \\
- \Leftrightarrow  \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} =  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) 
-
+c_0 \sum \left(  \beta^{- \frac{1}{\theta}} (1+r)^{ \frac{\theta - 1}{\theta}} \right)^{t} &= \sum w_t \left(  \frac{1}{1+r} \right)^{t} + a_0
 \end{align}
+which allows to compute all $c_t$ after solving for $c_0$
+\begin{align}
+c_0 &= \frac{\sum w_t \left(  \frac{1}{1+r} \right)^{t} + a_0}{\sum \left(  \beta^{- \frac{1}{\theta}} (1+r)^{ \frac{\theta - 1}{\theta}} \right)^{t}} \\
+c_{t+1} &= c_t \left( \beta (1+r) \right)^{ \frac{1}{\theta}}.  \\
+\end{align}
+This can now be implemented into an algorithm by using a for-loop.
+\subsection{Algorithm}
+\begin{lstlisting}[style=Matlab-editor]
+%PS3 Problem 4
+%No T is given, so declare it at the beginning of the program, and for any
+%theta
+clear;
+close all;
+clc;
+T=20;
+theta=1;
+%variable initialization (fixed)
+time=linspace(0,T,T+1); %just for plot
+w=zeros(T+1,1);
+w(1)=10;
+beta=0.99;
+r=0.05;
+%these variables will be determined
+a=zeros(T+1,1);
+c=zeros(T+1,1);
+%computation (could also be written as a function)
+num=zeros(T+1,1);
+denom=zeros(T+1,1);
+if theta==1
+    factor=beta*(1+r);
+else
+    factor=(1+r)^((1-theta)/theta)*beta^(1/theta);
+end
+for i=0:T
+  num(i+1)=w(i+1)*(1+r)^(-i);  
+  denom(i+1)=(factor)^i;  
+end
+c(1)=sum(num)/sum(denom);
+for i=1:T
+  a(i+1)=a(i)*(1+r)+w(i)-c(i);
+  c(i+1)=c(i)*(beta*(1+r))^(1/theta); 
+end
+figure
+plot(time,c,time,w,time,a);
+legend('C','W','A')
+acheck=a(end);
+ccheck=c(end);
+if (round(ccheck*1000)/1000==round(acheck*(1+r)*1000)/1000)
+    display('True --> a_{T+1}= 0')
+elseif (round(ccheck*1000)/1000>round(acheck*(1+r)*1000)/1000)
+  display('a_{T+1}<0')
+  disc=a(end);
+  subst=zeros(T+1,1);
+  for i=0:T
+    subst(i+1)=(1+r)^i*((beta*(1+r))^(i/theta))^T-i;  
+  end
+  d=sum(subst);
+  c(1)=c(1)-d;
+  for i=1:T
+    c(i+1)=c(i)*(beta*(1+r))^(i/theta);  
+    a(i+1)=a(i)*(1+r)+w(i)-c(i);
+  end
+else
+    display('error, a_{T+1}>0')
+end
+\end{lstlisting}
+\subsection{What to do if $\theta$ = 1}
+in the case that $\theta$ = 1, we get \begin{center} $\frac{c_t^{1-1}-1}{1-1} = \frac{1-1}{0} = \frac{0}{0}$ .\end{center}
+In this case, an application of L'H\^{o}pital's rule has to be applied
+\begin{center} $\frac{f(x)}{g(x)} = \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{\partial x}\right )}$ .\end{center}
+We now have to use
+\begin{align}
+f(\theta ) &= c_t^{1- \theta} -1 \\
+g( \theta) &=1 - \theta
+\end{align}
+giving
+\begin{align}
+\frac{ \partial f(\theta )}{\partial \theta} &= (-1) \ln (c_t) \exp({(1- \theta ) \ln (c_t)} )\\
+\frac{ \partial g(\theta )}{\partial \theta} &= -1 \\
+ \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )} &= \ln (c_t) \exp({(1- \theta ) \ln (c_t)} )
+\end{align}
+in the limit
+\begin{align}
+\lim_{\theta \rightarrow 1}  \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )}  = \ln(c_t) 
+\end{align}
+which can then be used in the maximization problem to obtain a new Euler equation.
 \section{Question 5}
 \section{Question 6}
 \end{document}
