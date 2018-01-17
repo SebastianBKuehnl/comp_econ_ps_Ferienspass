@@ -28,17 +28,17 @@ for i=0:T
   denom(i+1)=(factor)^i;  
 end
 c(1)=sum(num)/sum(denom);
-u=zeros(T,1);
 for i=1:T
-  c(i+1)=c(i)*(beta*(1+r))^(1/theta);  
   a(i+1)=a(i)*(1+r)+w(i)-c(i);
+  c(i+1)=c(i)*(beta*(1+r))^(1/theta); 
+  if c(i+1)<=0
+      c(i+1)=0;
+      display(['c<=0 in period ',int2str(i+1)])
+  end
 end
 figure
 plot(time,c,time,w,time,a);
 legend('C','W','A')
-figure
-plot(u)
-legend('U')
 acheck=a(end);
 ccheck=c(end);
 if (round(ccheck*1000)/1000==round(acheck*(1+r)*1000)/1000)
