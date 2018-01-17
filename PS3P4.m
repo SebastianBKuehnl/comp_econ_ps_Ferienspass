@@ -31,10 +31,6 @@ c(1)=sum(num)/sum(denom);
 for i=1:T
   a(i+1)=a(i)*(1+r)+w(i)-c(i);
   c(i+1)=c(i)*(beta*(1+r))^(1/theta); 
-  if c(i+1)<=0
-      c(i+1)=0;
-      display(['c<=0 in period ',int2str(i+1)])
-  end
 end
 figure
 plot(time,c,time,w,time,a);
