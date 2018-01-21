@@ -293,8 +293,13 @@ r=prob_high*r_high+prob_low*r_low;
 mutil=(w_init*(r-r_f))/((w_init*(1+r_f+alpha*(r-r_f)))^(1-phi));
 end
 \end{lstlisting}
-%The fminbnd solution is at alpha=0.99993 while the fmincon solution is at alpha=0.99767.
-The two methods yield different results because the way the constraints are defined differ. In fmincon, the can hold with equality, in fminbnd they have to hold with strict inequality. 
+The fminbnd solution is at alpha=0.99993. The first fmincon solution, starting from the upper boundary is at alpha=0.99828. The second fmincon solution, starting from the lower boundary is at alpha=0.99767.
+\\ \\
+The two methods can yield different results because
+\begin{enumerate} 
+\item The way the constraints are defined differ. In fmincon, the can hold with equality, in fminbnd they have to hold with strict inequality. 
+\item The way the algorithm searches for a minimum. fmincon starts at some point $x_0$ and moves along the $x$-axis while evaluating the function. fminbnd searches for a local minimum on the entire interval.
+\end{enumerate}
 \begin{figure}[H]
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio, center]{PS3Q5Sub3bPlot.jpg} 
 \caption{Illustration of the utility and marginal utility, depending on $\alpha$. \newline (The red line is a reference line with linear slope)}

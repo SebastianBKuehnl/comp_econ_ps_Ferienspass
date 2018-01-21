@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  21 JAN 2018 17:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  21 JAN 2018 17:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -501,10 +501,21 @@ Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
  [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 296--299
+
+ []
+
+
+Overfull \hbox (1.21364pt too wide) in paragraph at lines 301--302
+\OT1/cmr/m/n/10 point $\OML/cmm/m/it/10 x[]$ \OT1/cmr/m/n/10 and moves along th
+e $\OML/cmm/m/it/10 x$\OT1/cmr/m/n/10 -axis while eval-u-at-ing the func-tion. 
+fminbnd
+ []
+
 <PS3Q5Sub3bPlot.jpg, id=47, 1124.2pt x 843.15pt>
 File: PS3Q5Sub3bPlot.jpg Graphic file (type jpg)
  <use PS3Q5Sub3bPlot.jpg>
-Package pdftex.def Info: PS3Q5Sub3bPlot.jpg used on input line 299.
+Package pdftex.def Info: PS3Q5Sub3bPlot.jpg used on input line 304.
 (pdftex.def)             Requested size: 344.99901pt x 258.74925pt.
 
 [8] [9 <./PS3Q5Sub3bPlot.jpg>] (./PS3.aux) ) 
@@ -537,7 +548,7 @@ mr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
 .pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1000.pf
 b>
-Output written on PS3.pdf (9 pages, 307580 bytes).
+Output written on PS3.pdf (9 pages, 308275 bytes).
 PDF statistics:
  112 PDF objects out of 1000 (max. 8388607)
  84 compressed objects within 1 object stream
