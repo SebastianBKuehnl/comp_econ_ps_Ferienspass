@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  17 JAN 2018 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  21 JAN 2018 17:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -501,38 +501,46 @@ Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
  [6] [7]
-(./PS3.aux) ) 
+<PS3Q5Sub3bPlot.jpg, id=47, 1124.2pt x 843.15pt>
+File: PS3Q5Sub3bPlot.jpg Graphic file (type jpg)
+ <use PS3Q5Sub3bPlot.jpg>
+Package pdftex.def Info: PS3Q5Sub3bPlot.jpg used on input line 299.
+(pdftex.def)             Requested size: 344.99901pt x 258.74925pt.
+
+[8] [9 <./PS3Q5Sub3bPlot.jpg>] (./PS3.aux) ) 
 Here is how much of TeX's memory you used:
- 6955 strings out of 492995
- 96663 string characters out of 6132704
+ 6996 strings out of 492995
+ 97169 string characters out of 6132704
  277299 words of memory out of 5000000
- 10370 multiletter control sequences out of 15000+600000
+ 10410 multiletter control sequences out of 15000+600000
  20301 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  54i,11n,120p,738b,1754s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSym
-bolA.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
-ts1.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolF.
-enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}{/us
-r/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolD.enc}</usr/lo
-cal/texlive/2017/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pfb></usr/lo
-cal/texlive/2017/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol5.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol7.pfb></usr/loca
-l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
-texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/20
-17/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on PS3.pdf (7 pages, 236257 bytes).
+{/usr/local/texlive/2017/texmf-dist
+/fonts/enc/dvips/mnsymbol/MnSymbolA.enc}{/usr/local/texlive/2017/texmf-dist/fon
+ts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2017/texmf-dist/font
+s/enc/dvips/mnsymbol/MnSymbolF.enc}{/usr/local/texlive/2017/texmf-dist/fonts/en
+c/dvips/mnsymbol/MnSymbolE.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dv
+ips/mnsymbol/MnSymbolC.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/
+mnsymbol/MnSymbolD.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/m
+nsymbol/MnSymbol10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/m
+nsymbol/MnSymbol5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/mn
+symbol/MnSymbol7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1000.pf
+b>
+Output written on PS3.pdf (9 pages, 307580 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
