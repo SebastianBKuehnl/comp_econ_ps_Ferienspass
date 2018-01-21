@@ -4,8 +4,8 @@
 \usepackage{wasysym}
 \usepackage{graphicx}
 \usepackage{float}
-
-   \usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{pdfpages}
+\usepackage[numbered,framed]{matlab-prettifier}
 \usepackage[export]{adjustbox}
 \begin{document}
 \begin{center}
@@ -224,8 +224,9 @@ in the limit
 \end{align}
 which can then be used in the maximization problem to obtain a new Euler equation.
 \section{Question 5}
-\subsection{Subquestion 3}
-\subsubsection{Subquestion b}
+%\subsection{Subquestion 3}
+\includepdf[pages=-]{document.pdf} 
+%\subsubsection{Subquestion b}
 \begin{lstlisting}[style=Matlab-editor]
 clear;
 close all;
