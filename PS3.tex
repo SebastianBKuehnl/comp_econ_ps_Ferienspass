@@ -105,6 +105,14 @@ Thus, the solution vector becomes
 \end{enumerate}
 The reasoning behind this it that if an additional unit of human capital yields more than an additional unit of physical capital, and lasts longer than it as well, and investment in human capital is preferred over an investment in physical capital. This goes on this way until a point is reached, where an investment in human capital has the same marginal-product-to-depreciation-rate as physical capital. The investment in the two goods will increase such that their levels always give the same marginal-product-to-depreciation-rate (which implies a constant ratio of human to physical capital (which can be seen in the graph as well)) until the entire income is spent. At this point, the balanced growth path level is reached.
 \section{Question 3}
+Matlab Code:
+   \lstinputlisting[style=Matlab-editor]{ps3_ex3.m}
+   Fixed Point Algorithm:
+   \lstinputlisting[style=Matlab-editor]{fixedpoint.m}
+   Newton Algorithm:
+   \lstinputlisting[style=Matlab-editor]{mynewton.m}
+   Sigmoid:
+   \lstinputlisting[style=Matlab-editor]{sigmoid.m}
 \section{Question 4}
 %Given the constraints, the problem can be reformulated as
 %\begin{equation}
@@ -245,10 +253,9 @@ The two methods can yield different results because
 \end{figure}
 Comment: After running the algorithm for the first two times, the solutions produced by fmincon were = 1. The difference between the results from the two algorithms was then easily explainable by the difference in the interval constrains mentioned above ( $lb \leq \alpha \leq ub $ (fmincon) vs $ lb < \alpha < ub $ (fminbnd)). \\ \\
 c) \\ \\
-Part two of this question resulted in $\alpha = 2.73308$. However, the solution in part three was bounded on the upside at $\overline{\alpha} = 1$. Since the solution, derived numerically, resulted in $\alpha$ close to one (and one the first tries with fmincon resulted in $\alpha  = 1$, exactly the boundary), it seems like the unconstrained numerical solution would yield the same result. This implies that the household would like to borrow at the risk free rate (negative $\alpha^f$) to invest more in stocks to increase his expected portfolio return. \\ Since $\phi =  1- \gamma$ and $\phi =  -3$, it can be implied that $\gamma =  4$. Thus, the agent is risk averse. However, one would expect a risk averse agent not to borrow to invest into the risky asset. \\  
+Part two of this question resulted in $\alpha = 2.73308$. However, the solution in part three was bounded on the upside at $\overline{\alpha} = 1$. The solution, derived numerically, resulted in $\alpha$ close to one (and one the first tries with fmincon resulted in $\alpha  = 1$, exactly the boundary). If one runs the maximization without the upper constrain, the argmax increases with the starting point (for fmincon (that the solution does not converge to infinity can be explained as the differences in function value lie below machine precision which results in a maximum being reported)). This implies that the household would like to borrow at the risk free rate (negative $\alpha^f$) to invest more in stocks to increase his expected portfolio return. \\ Since $\phi =  1- \gamma$ and $\phi =  -3$, it can be implied that $\gamma =  4$. Thus, the agent is risk averse. However, one would expect a risk averse agent not to borrow to invest into the risky asset. \\  
 Looking at the utility function with the parameters specified in the question, $u(w_1)=\frac{\left(\frac{1}{w_1^3}\right )}{-3}$, it becomes obvious that with increasing wealth, the utility moves closer to zero from below as wealth increases. Since the probability to receive a high interest rate is nine times as large as the probability to receive a low interest rate, the expected return from the risky asset is much larger than the return of the safe asset. \\ Since the maximization problem can be rewritten as
 \begin{align}
 \max_\alpha \underbrace{ \frac{1}{\phi}}_{<0} \left( \underbrace{ w_0 \left(1+r^f + \alpha  \left(E [ r]- r^f\right) \right)}_{>0} \right) \underbrace{^\phi}_{<0}
 \end{align}
-which explains that $\alpha$ exceeds $1$. With increasing $\alpha$, utility comes closer and closer to zero, will never be above it, and will never have a .
-\end{document}
+which explains that $\alpha$ exceeds $1$ since there is no more uncertainty in the model. \end{document}
