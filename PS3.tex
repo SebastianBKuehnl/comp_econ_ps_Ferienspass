@@ -230,6 +230,7 @@ in the limit
 which can then be used in the maximization problem to obtain a new Euler equation.
 \section{Question 5}
 \includepdf[pages=-]{document.pdf} b) \newline
+
 \lstinputlisting[style=Matlab-editor]{PS3Q5.m}
 The fminbnd solution is at alpha=0.99993. The first fmincon solution, starting from the upper boundary is at alpha=0.99828. The second fmincon solution, starting from the lower boundary is at alpha=0.99767.
 \\ \\
@@ -244,6 +245,10 @@ The two methods can yield different results because
 \end{figure}
 Comment: After running the algorithm for the first two times, the solutions produced by fmincon were = 1. The difference between the results from the two algorithms was then easily explainable by the difference in the interval constrains mentioned above ( $lb \leq \alpha \leq ub $ (fmincon) vs $ lb < \alpha < ub $ (fminbnd)). \\ \\
 c) \\ \\
-Part two of this question resulted in $\alpha = 2.73308$. However, since the solution in part three was bounded on the upside at $\overline{\alpha} = 1$. Since the solution, derived numerically, resulted in $\alpha$ close to one (and one the first tries with fmincon resulted in $\alpha  = 1$, exactly the boundary), it seems like the unconstrained numerical solution would yield the same result. This implies that the household would like to borrow at the risk free rate (negative $\alpha^f$) to invest more in stocks to increase his expected portfolio return. \\ Since $\phi =  1- \gamma$ and $\phi =  -3$, it can be implied that $\gamma =  4$. Thus, the agent is risk averse. However, one would expect a risk averse agent not to borrow to invest into the risky asset. \\  
-Looking at the utility function with the parameters specified in the question, $\frac{\frac{1}{u(w_1)^3}}{-3}$, it becomes obvious that with increasing wealth, the utility moves closer to zero.
+Part two of this question resulted in $\alpha = 2.73308$. However, the solution in part three was bounded on the upside at $\overline{\alpha} = 1$. Since the solution, derived numerically, resulted in $\alpha$ close to one (and one the first tries with fmincon resulted in $\alpha  = 1$, exactly the boundary), it seems like the unconstrained numerical solution would yield the same result. This implies that the household would like to borrow at the risk free rate (negative $\alpha^f$) to invest more in stocks to increase his expected portfolio return. \\ Since $\phi =  1- \gamma$ and $\phi =  -3$, it can be implied that $\gamma =  4$. Thus, the agent is risk averse. However, one would expect a risk averse agent not to borrow to invest into the risky asset. \\  
+Looking at the utility function with the parameters specified in the question, $u(w_1)=\frac{\left(\frac{1}{w_1^3}\right )}{-3}$, it becomes obvious that with increasing wealth, the utility moves closer to zero from below as wealth increases. Since the probability to receive a high interest rate is nine times as large as the probability to receive a low interest rate, the expected return from the risky asset is much larger than the return of the safe asset. \\ Since the maximization problem can be rewritten as
+\begin{align}
+\max_\alpha \underbrace{ \frac{1}{\phi}}_{<0} \left( \underbrace{ w_0 \left(1+r^f + \alpha  \left(E [ r]- r^f\right) \right)}_{>0} \right) \underbrace{^\phi}_{<0}
+\end{align}
+which explains that $\alpha$ exceeds $1$. With increasing $\alpha$, utility comes closer and closer to zero, will never be above it, and will never have a .
 \end{document}
