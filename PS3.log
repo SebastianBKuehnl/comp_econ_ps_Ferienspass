@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  21 JAN 2018 22:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  21 JAN 2018 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -547,119 +547,123 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--100
 
  []
 
-[4] [5 <./Q2Sub6.jpg>] [6] [7]
+[4] [5 <./Q2Sub6.jpg>] (./ps3_ex3.m
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1.
+) [6] (./fixedpoint.m) [7] (./mynewton.m)
+[8] (./sigmoid.m) [9] [10]
 Missing character: There is no   in font cmr7!
 Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
 Missing character: There is no   in font cmr10!
- <document.pdf, id=44, 597.50829pt x 845.0471pt>
+ <document.pdf, id=53, 597.50829pt x 845.0471pt>
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf>
-Package pdftex.def Info: document.pdf used on input line 232.
+Package pdftex.def Info: document.pdf used on input line 240.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: document.pdf Graphic file (type pdf)
  <use document.pdf>
-Package pdftex.def Info: document.pdf used on input line 232.
+Package pdftex.def Info: document.pdf used on input line 240.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 
-<document.pdf, id=47, page=1, 597.50829pt x 845.0471pt>
+<document.pdf, id=56, page=1, 597.50829pt x 845.0471pt>
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 1>
-Package pdftex.def Info: document.pdf, page1 used on input line 232.
+Package pdftex.def Info: document.pdf, page1 used on input line 240.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: document.pdf Graphic file (type pdf)
  <use document.pdf, page 1>
-Package pdftex.def Info: document.pdf, page1 used on input line 232.
+Package pdftex.def Info: document.pdf, page1 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
- [8]
+ [11]
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 1>
-Package pdftex.def Info: document.pdf, page1 used on input line 232.
+Package pdftex.def Info: document.pdf, page1 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
  <use document.pdf, page 1>
-Package pdftex.def Info: document.pdf, page1 used on input line 232.
+Package pdftex.def Info: document.pdf, page1 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 1>
-Package pdftex.def Info: document.pdf, page1 used on input line 232.
+Package pdftex.def Info: document.pdf, page1 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
- [9 <./document.pdf>]
-<document.pdf, id=92, page=2, 597.50829pt x 845.0471pt>
+ [12 <./document.pdf>]
+<document.pdf, id=101, page=2, 597.50829pt x 845.0471pt>
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 2>
-Package pdftex.def Info: document.pdf, page2 used on input line 232.
+Package pdftex.def Info: document.pdf, page2 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
  <use document.pdf, page 2>
-Package pdftex.def Info: document.pdf, page2 used on input line 232.
+Package pdftex.def Info: document.pdf, page2 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 2>
-Package pdftex.def Info: document.pdf, page2 used on input line 232.
+Package pdftex.def Info: document.pdf, page2 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
- [10 <./document.pdf>]
-<document.pdf, id=96, page=3, 597.50829pt x 845.0471pt>
+ [13 <./document.pdf>]
+<document.pdf, id=106, page=3, 597.50829pt x 845.0471pt>
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 3>
-Package pdftex.def Info: document.pdf, page3 used on input line 232.
+Package pdftex.def Info: document.pdf, page3 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
  <use document.pdf, page 3>
-Package pdftex.def Info: document.pdf, page3 used on input line 232.
+Package pdftex.def Info: document.pdf, page3 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
 File: document.pdf Graphic file (type pdf)
 
 <use document.pdf, page 3>
-Package pdftex.def Info: document.pdf, page3 used on input line 232.
+Package pdftex.def Info: document.pdf, page3 used on input line 240.
 (pdftex.def)             Requested size: 562.12285pt x 795.00201pt.
- [11 <./document.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+ [14 <./document.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
-(./PS3Q5.m [12])
-Underfull \hbox (badness 10000) in paragraph at lines 235--238
+(./PS3Q5.m [15])
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
 
  []
 
 
-Overfull \hbox (1.21364pt too wide) in paragraph at lines 240--241
+Overfull \hbox (1.21364pt too wide) in paragraph at lines 248--249
 \OT1/cmr/m/n/10 point $\OML/cmm/m/it/10 x[]$ \OT1/cmr/m/n/10 and moves along th
 e $\OML/cmm/m/it/10 x$\OT1/cmr/m/n/10 -axis while eval-u-at-ing the func-tion. 
 fminbnd
  []
 
-<PS3Q5Sub3bPlot.jpg, id=104, 1124.2pt x 843.15pt>
+<PS3Q5Sub3bPlot.jpg, id=114, 1124.2pt x 843.15pt>
 File: PS3Q5Sub3bPlot.jpg Graphic file (type jpg)
  <use PS3Q5Sub3bPlot.jpg>
-Package pdftex.def Info: PS3Q5Sub3bPlot.jpg used on input line 243.
+Package pdftex.def Info: PS3Q5Sub3bPlot.jpg used on input line 251.
 (pdftex.def)             Requested size: 344.99901pt x 258.74925pt.
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
 
  []
 
-[14 <./PS3Q5Sub3bPlot.jpg>] [15] (./PS3.aux) ) 
+[17 <./PS3Q5Sub3bPlot.jpg>] [18] (./PS3.aux) ) 
 Here is how much of TeX's memory you used:
- 7888 strings out of 492995
- 111450 string characters out of 6132704
- 295734 words of memory out of 5000000
- 11256 multiletter control sequences out of 15000+600000
+ 7945 strings out of 492995
+ 112027 string characters out of 6132704
+ 305600 words of memory out of 5000000
+ 11301 multiletter control sequences out of 15000+600000
  20301 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,18n,121p,985b,1752s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -687,10 +691,10 @@ sbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1
 000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/t
 exlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PS3.pdf (15 pages, 378296 bytes).
+Output written on PS3.pdf (18 pages, 391175 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 185 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
