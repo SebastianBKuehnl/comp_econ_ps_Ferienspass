@@ -229,7 +229,7 @@ in the limit
 \end{align}
 which can then be used in the maximization problem to obtain a new Euler equation.
 \section{Question 5}
-\includepdf[pages=-]{document.pdf} 
+\includepdf[pages=-]{document.pdf} b) \newline
 \lstinputlisting[style=Matlab-editor]{PS3Q5.m}
 The fminbnd solution is at alpha=0.99993. The first fmincon solution, starting from the upper boundary is at alpha=0.99828. The second fmincon solution, starting from the lower boundary is at alpha=0.99767.
 \\ \\
@@ -242,5 +242,8 @@ The two methods can yield different results because
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio, center]{PS3Q5Sub3bPlot.jpg} 
 \caption{Illustration of the utility and marginal utility, depending on $\alpha$. \newline (The red line is a reference line with linear slope)}
 \end{figure}
-Comment: After running the algorithm for the first two times, the solutions produced by fmincon were = 1. The difference between the results from the two algorithms was then easily explainable by the difference in the interval constrains mentioned above ( $lb \leq \alpha \leq ub $ (fmincon) vs $ lb < \alpha < ub $ (fminbnd)). 
+Comment: After running the algorithm for the first two times, the solutions produced by fmincon were = 1. The difference between the results from the two algorithms was then easily explainable by the difference in the interval constrains mentioned above ( $lb \leq \alpha \leq ub $ (fmincon) vs $ lb < \alpha < ub $ (fminbnd)). \\ \\
+c) \\ \\
+Part two of this question resulted in $\alpha = 2.73308$. However, since the solution in part three was bounded on the upside at $\overline{\alpha} = 1$. Since the solution, derived numerically, resulted in $\alpha$ close to one (and one the first tries with fmincon resulted in $\alpha  = 1$, exactly the boundary), it seems like the unconstrained numerical solution would yield the same result. This implies that the household would like to borrow at the risk free rate (negative $\alpha^f$) to invest more in stocks to increase his expected portfolio return. \\ Since $\phi =  1- \gamma$ and $\phi =  -3$, it can be implied that $\gamma =  4$. Thus, the agent is risk averse. However, one would expect a risk averse agent not to borrow to invest into the risky asset. \\  
+Looking at the utility function with the parameters specified in the question, $\frac{\frac{1}{u(w_1)^3}}{-3}$, it becomes obvious that with increasing wealth, the utility moves closer to zero.
 \end{document}
