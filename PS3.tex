@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
 \usepackage{MnSymbol}
 \usepackage{wasysym}
 \usepackage{graphicx}
@@ -105,22 +105,92 @@ Thus, the solution vector becomes
 \end{enumerate}
 The reasoning behind this it that if an additional unit of human capital yields more than an additional unit of physical capital, and lasts longer than it as well, and investment in human capital is preferred over an investment in physical capital. This goes on this way until a point is reached, where an investment in human capital has the same marginal-product-to-depreciation-rate as physical capital. The investment in the two goods will increase such that their levels always give the same marginal-product-to-depreciation-rate (which implies a constant ratio of human to physical capital (which can be seen in the graph as well)) until the entire income is spent. At this point, the balanced growth path level is reached.
 \section{Question 3}
-Matlab Code:
-   \lstinputlisting[style=Matlab-editor]{ps3_ex3.m}
+\subsection{}
+To begin with, recall two properties of the logistic function characterising $y_n$:
+\begin{align*}
+y(x) := \Lambda(x) &= \frac{1}{1 + exp(-x)} = \frac{exp(x)}{1 + exp(x)} \tag{*} \\
+\intertext{Applying the quotient rule, yields the partial derivative w.r.t. x}
+\lambda(x) &= \frac{exp(x)}{(1 + exp(x))^2} \notag \\
+&= \frac{exp(x)}{1 + exp(x)} \frac{1}{1 + exp(x)} \notag \\
+&= \Lambda(x) \Lambda(-x) \tag{using (*)} \\
+&= \Lambda(x) (1 - \Lambda(x)) \tag{by symmetry around zero} \\
+&= y(x) (1 - y(x)) \tag{**}
+\end{align*}
+The log-likelihood function is given by
+\begin{equation*}
+\mathbb{E}(\beta) = - \sum_{n=1}^N t_n log(y_n) + (1-t_n) log(1 - y_n)
+\end{equation*}
+Accordingly, the first order condition w.r.t. coefficient $\beta_i$ is given by
+\begin{align*}
+\frac{\partial\mathbb{E}(\beta)}{\partial \beta_i} &= - \sum_{n=1}^N \frac{(t_n - \Lambda(X_n^{\prime}\beta)) \lambda(X_n^{\prime}\beta) X_{ni}}{\Lambda(X_n^{\prime}\beta) (1 - \Lambda(X_n^{\prime}\beta))} \tag{for $i = 1,...,K$} \\
+&= - \sum_{n=1}^N (t_n - \Lambda(X_n^{\prime}\beta)) X_{ni} \tag{using (**} \\
+&= \sum_{n=1}^N (y_n - t_n) X_{ni} \tag{by definition of $y_n$} \\
+&= 0 \tag{for i = 1,...,K}
+\end{align*}
+Putting these $K$ likelihood equations together yields the result
+\begin{align*}
+\nabla \mathbb{E}(\beta) &= \sum_{n=1}^N (y_n - t_n) X_n^\prime \notag\\
+&= (y - t)^\prime X
+\end{align*}
+In order to characterise the Hessian, take derivative w.r.t. $\beta_j$
+\begin{align*}
+\frac{\partial\mathbb{E}(\beta)}{\partial \beta_i \partial \beta_j} &= \sum_{n=1}^N \lambda(X_n^{\prime}\beta) X_{ni} X_{nj} \tag{for any $i,j = 1,...,K$} \\
+&= \sum_{n=1}^N \Lambda(X_n^{\prime}\beta) (1 - \Lambda(X_n^{\prime}\beta)) X_{ni} X_{nj} \notag \\
+&= \sum_{n=1}^N y_n (1 - y_n) X_{ni} X_{nj} \tag{by definition of $y_n$}
+\end{align*}
+which represents the $(i,j)$th element of the Hessian. In summary, we have
+\begin{align*}
+H &= \sum_{n=1}^N y_n (1 - y_n) X_{n} X_{n}^\prime \notag \\
+&= X^\prime R X \notag
+\end{align*}
+
+\subsection{}
+It is well known that the log-likelihood function is globally concave in $\beta$ because any contribution $n$ is globally concave in the parameters and the sum of concave functions is again concave. Multiplying by $(-1)$ yields a globally convex function in $\beta$. Moreover, any real number is feasible for $\beta_i$ and the set of real numbers is convex. To sum up, a globally convex function is minimised over a convex set, i.e., we face a convex minimisation problem. If a local minimum exists, then it is also a global minimum point. It furthermore implies that the likelihood equations uniquely define $\beta$ (except for a very special case). 
+\subsection{}
+\subsection{}
+Masterfile for the following subquestions:
+\lstinputlisting[style=Matlab-editor]{ps3_ex3.m}
+
+\subsection{}
+\begin{enumerate}
+\item Newton's method converges to $\beta = (-19.9159 \qquad  2.7321 \qquad 2.0589)^\prime$ after 9 iterations and 0.0142 seconds.
+\item Broyden's method does not converge.
+\item For any dampening factor $\lambda > 0$, the fixed point iteration did not converge.
+\end{enumerate}
+
+\textbf{Matlab Code}\\
+   Newton's Algorithm:
+   \lstinputlisting[style=Matlab-editor]{mynewton.m}
+   Broyden's Algorithm:
+   \lstinputlisting[style=Matlab-editor]{broyden.m}
    Fixed Point Algorithm:
    \lstinputlisting[style=Matlab-editor]{fixedpoint.m}
-   Newton Algorithm:
-   \lstinputlisting[style=Matlab-editor]{mynewton.m}
    Sigmoid:
    \lstinputlisting[style=Matlab-editor]{sigmoid.m}
+
+\subsection{}
+The function broyden.m used in the previous question returns the condition number of the Jacobian at every iteration. The condition number is consistently extremely large. Large values indicate that the problem is ill-conditioned. This is why the iteration did not converge.
+
+\subsection{}
+%\lstinputlisting[53-69]{ps3_ex3.m}
+Standardisation significantly reduces the condition of the Jacobian. Unfortunately, the condition is still far from being optimal and the Broyden's method does not converge again.
+
+\subsection{}
+%\lstinputlisting[71-76]{ps3_ex3.m}
+Unfortunately, the Newton's method did not converge again.
+
+\subsection{}
+Newton's method is the most time-consuming algorithm since it requires to evaluate and invert the Hessian at every iteration. Unfortunately, other algorithms often failed to converge. Theoretically, Broyden's method is faster because only one inversion is necessary. Afterwards, it is possible to approximate the Hessian using information already available. However, Broyden's method is more imprecise and, therefore, requires more iterations for convergence than Quasi-Newton methods that directly update the inverse of the Hessian such as BFGS and DGP.
+
+ 
 \section{Question 4}
 %Given the constraints, the problem can be reformulated as
 %\begin{equation}
-%\max \sum_{t=0}^T \beta^t \frac{\left( a_t (1+r) + w_t -a_{t+1} \right )^{1- \theta}-1}{1- \theta}
+%\max \sum_{t=0}^T \beta^t \frac{\left( a_t (1+r) + w_t -a_{t+1} \right )^{1-ï¿½\theta}-1}{1- \theta}
 %\end{equation}
 %which can then be stated as a Bellman equation, starting from the decision in period T
 %\begin{equation}
-%\nu_T = \max_{a_{T+1}} \left( \frac{\left( a_T (1+r) + w_T -a_{T+1} \right )^{1- \theta}-1}{1- \theta} + \beta \times 0 \right)
+%\nu_T = \max_{a_{T+1}} \left( \frac{\left( a_T (1+r) + w_T -a_{T+1} \right )^{1-ï¿½\theta}-1}{1- \theta} + \beta \times 0 \right)
 %\end{equation}
 %giving the policy function
 %\begin{equation}
@@ -128,17 +198,17 @@ Matlab Code:
 %\end{equation}
 %which implies
 %\begin{equation}
-%\nu_T =   \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  .
+%\nu_T =   \frac{\left( a_T (1+r) + w_T  \right )^{1-ï¿½\theta}-1}{1- \theta}  .
 %\end{equation}
 %This result can now be used in the value function one period before the final period
 %\begin{align}
-%\nu_{T-1} &= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta  \nu_T  \right) \\
-%&= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1- \theta}-1}{1- \theta} + \beta \frac{\left( a_T (1+r) + w_T  \right )^{1- \theta}-1}{1- \theta}  \right)
+%\nu_{T-1} &= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1-ï¿½\theta}-1}{1- \theta} + \beta  \nu_T  \right) \\
+%&= \max_{a_{T}} \left( \frac{\left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{1-ï¿½\theta}-1}{1- \theta} + \beta \frac{\left( a_T (1+r) + w_T  \right )^{1-ï¿½\theta}-1}{1- \theta}  \right)
 %\end{align}
 %Maximizing wrt $a_T$:
 %\begin{align}
-%\frac{\partial \nu_{T-1}}{\partial a_{T}} = \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} (-1) +  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) = 0 \\
-% \Leftrightarrow  \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{- \theta} =  \beta \left( a_T (1+r) + w_T  \right )^{- \theta} (1+r) 
+%\frac{\partial \nu_{T-1}}{\partial a_{T}} = \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{-ï¿½\theta} (-1) +  \beta \left( a_T (1+r) + w_T  \right )^{-ï¿½\theta} (1+r) = 0 \\
+% \Leftrightarrow  \left( a_{T-1} (1+r) + w_{T-1} -a_{T} \right )^{-ï¿½\theta} =  \beta \left( a_T (1+r) + w_T  \right )^{-ï¿½\theta} (1+r) 
 %\end{align}
 \subsection{Analytical Solution}
 From the Euler equation and the budget constraint we get that
@@ -219,7 +289,7 @@ end
 \subsection{What to do if $\theta$ = 1}
 in the case that $\theta$ = 1, we get \begin{center} $\frac{c_t^{1-1}-1}{1-1} = \frac{1-1}{0} = \frac{0}{0}$ .\end{center}
 In this case, an application of L'H\^{o}pital's rule has to be applied
-\begin{center} $\frac{f(x)}{g(x)} = \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{\partial x}\right )}$ .\end{center}
+\begin{center} $\frac{f(x)}{g(x)} = \frac{\left (\frac{\partial f(x)}{\partial x}ï¿½\right )}{\left (\frac{ \partial g(x)}{\partial x}\right )}$ .\end{center}
 We now have to use
 \begin{align}
 f(\theta ) &= c_t^{1- \theta} -1 \\
@@ -229,11 +299,11 @@ giving
 \begin{align}
 \frac{ \partial f(\theta )}{\partial \theta} &= (-1) \ln (c_t) \exp({(1- \theta ) \ln (c_t)} )\\
 \frac{ \partial g(\theta )}{\partial \theta} &= -1 \\
- \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )} &= \ln (c_t) \exp({(1- \theta ) \ln (c_t)} )
+ \frac{\left (\frac{\partial f(x)}{\partial x}ï¿½\right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )} &= \ln (c_t) \exp({(1- \theta ) \ln (c_t)} )
 \end{align}
 in the limit
 \begin{align}
-\lim_{\theta \rightarrow 1}  \frac{\left (\frac{\partial f(x)}{\partial x} \right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )}  = \ln(c_t) 
+\lim_{\theta \rightarrow 1}  \frac{\left (\frac{\partial f(x)}{\partial x}ï¿½\right )}{\left (\frac{ \partial g(x)}{ \partial x}\right )}  = \ln(c_t) 
 \end{align}
 which can then be used in the maximization problem to obtain a new Euler equation.
 \section{Question 5}
