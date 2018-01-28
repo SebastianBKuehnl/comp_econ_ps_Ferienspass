@@ -42,22 +42,6 @@ for i=1:length(b)
    yact(i)=simplef(b(i));
 end
 
-%plots
-figure
-plot(b,yap-yact,b,yapp-yact,'--r')
-xlabel('x')
-ylabel('p(x)-f(x)')
-title(['Chebychev, n= ', int2str(n)])
-legend('equidistant nodes residuals','Chebychev nodes residuals')
-
-figure
-plot(b,yap,'.b',b,yapp,'--r',b,yact)
-xlabel('x')
-ylabel('p(x)-f(x)')
-title(['n= ', int2str(n)])
-legend('equidistant nodes approx','Chebychev nodes approx','function')
-
-
 %n=15
 n=15; %number of equidistant nodes
 %f(x) is simplef.m
@@ -127,27 +111,94 @@ cc3=Bb3\yy3; %chebychev
 yap3=funeval(c3,fspace3,b);
 yapp3=funeval(cc3,fspace3,b);
 
+
+
+%SPLINES
+%n=5
+n=5;
+fspacespl=fundefn('spli',n-1,-1,1,n);
+distance=(xmax-xmin)/(n-1);
+xspl=zeros(n,1);
+yspl=zeros(n,1);
+for i=1:n
+  xspl(i)=xmin+(i-1)*distance; 
+  yspl(i)=simplef(xspl(i));    
+end
+
+%calculate the matrix of basis functions
+Bspl=funbas(fspacespl,xspl);  
+
+%get polynomial coefficients
+cspl=Bspl\yspl;  
+
+%approximate the function
+yapspl=funeval(cspl,fspacespl,b);
+
+
+%n=15
+n=15;
+fspacespl2=fundefn('spli',n-1,-1,1,n);
+distance2=(xmax-xmin)/(n-1);
+xspl2=zeros(n,1);
+yspl2=zeros(n,1);
+for i=1:n
+  xspl2(i)=xmin+(i-1)*distance2; 
+  yspl2(i)=simplef(xspl2(i));    
+end
+
+%calculate the matrix of basis functions
+Bspl2=funbas(fspacespl2,xspl2);  
+
+%get polynomial coefficients
+cspl2=Bspl2\yspl2;  
+
+%approximate the function
+yapspl2=funeval(cspl2,fspacespl2,b);
+
+
+%n=150
+n=150;
+fspacespl3=fundefn('spli',n-1,-1,1,n);
+distance3=(xmax-xmin)/(n-1);
+xspl3=zeros(n,1);
+yspl3=zeros(n,1);
+for i=1:n
+  xspl3(i)=xmin+(i-1)*distance3; 
+  yspl3(i)=simplef(xspl3(i));    
+end
+
+%calculate the matrix of basis functions
+Bspl3=funbas(fspacespl3,xspl3);  
+
+%get polynomial coefficients
+cspl3=Bspl3\yspl3;  
+
+%approximate the function
+yapspl3=funeval(cspl3,fspacespl3,b);
+
+
+
 %plots compare with same n
 figure
-plot(b,yap-yact,b,yapp-yact,'--r')
+plot(b,yap-yact,b,yapp-yact,'--r',b,yapspl,'.b')
 xlabel('x')
-ylabel('p(x)-f(x)')
-title('Chebychev, n= 5')
-legend('equidistant nodes residuals','Chebychev nodes residuals')
+ylabel('p(x)-f(x) residuals')
+title('n= 5')
+legend('Chebychev, equidistant nodes','Chebychev, Chebychev nodes','Splines, equidistant nodes')
 
 figure
-plot(b,yap2-yact,b,yapp2-yact,'--r')
+plot(b,yap2-yact,b,yapp2-yact,'--r',b,yapspl,'.b')
 xlabel('x')
-ylabel('p(x)-f(x)')
-title('Chebychev, n= 15')
-legend('equidistant nodes residuals','Chebychev nodes residuals')
+ylabel('p(x)-f(x) residuals')
+title('n= 15')
+legend('Chebychev, equidistant nodes','Chebychev, Chebychev nodes','Splines, equidistant nodes')
 
 figure
-plot(b,yap3-yact,b,yapp3-yact,'--r')
+plot(b,yap3-yact,b,yapp3-yact,'--r',b,yapspl,'.b')
 xlabel('x')
-ylabel('p(x)-f(x)')
-title('Chebychev, n= 150')
-legend('equidistant nodes residuals','Chebychev nodes residuals')
+ylabel('p(x)-f(x) residuals')
+title('n= 150')
+legend('Chebychev. equidistant nodes','Chebychev, Chebychev nodes','Splines, equidistant nodes')
 
 
 %plots comparison same node method
@@ -156,12 +207,19 @@ figure
 plot(b,yap-yact,'.b',b,yap2-yact,'--r',b,yap3-yact)
 xlabel('x')
 ylabel('p(x)-f(x)')
-title('equidistant node approximations')
+title('Chebychev, quidistant node approximations')
 legend('n=5','n=15','n=150')
 
 figure
 plot(b,yapp-yact,'.b',b,yapp2-yact,'--r',b,yapp3-yact)
 xlabel('x')
 ylabel('p(x)-f(x)')
-title('Chebychev node approximations')
+title('Chebychev, Chebychev node approximations')
+legend('n=5','n=15','n=150')
+
+figure
+plot(b,yapspl-yact,'.b',b,yapspl2-yact,'--r',b,yapspl3-yact)
+xlabel('x')
+ylabel('p(x)-f(x)')
+title('Splines, equidistant node approximations')
 legend('n=5','n=15','n=150')
