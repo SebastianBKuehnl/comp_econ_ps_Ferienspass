@@ -44,38 +44,48 @@ gamma = linspace(0,3,100);                      %Gamma is now a vector of differ
 y_2= [1.06 1.1];
 u_1=nan(1,100);
 u_2=nan(1,100);
-
+difference = nan(2,100);
 %Plot intersection point
 figure('Name','PS5Q2Sub3')
 for j=1:2
 for i=1:100
 u_1(1,i) = utility(y_1,gamma(1,i));
 u_2(1,i) = w'*utility(exp(ln_eta)*y_2(1,j),gamma(1,i));
+difference(j,i) = u_2(1,i)-u_1(1,i);
 end
+[Min,Index] = min(abs(difference(j,:)));
 
 subplot(2,1,j) 
-plot(gamma,u_1,gamma,u_2)
+plot(gamma,u_1,gamma,u_2,gamma,difference(j,:))
+line([min(gamma),max(gamma)],[0,0],'Color','red','LineStyle','--')
+line([gamma(1,Index),gamma(1,Index)],[0,u_2(1,Index)])
 title(['With y_2 = ', num2str(y_2(1,j))])
-legend('Project 1','Project 2')
+legend('Project 1','Project 2','Difference')
 xlabel('Gamma')
 ylabel('Utility')
 end
-disp('As one can see clearly, changing y_2 changes the gamma at which both projects yield the same expected utility.');
 
-%Find intersection point numerically use Broyden
-%Difference = Utility_Difference(ln_eta,w,y_1,y_2(1,1),gamma);
+figure 
+plot (gamma, (difference(1,:)).^2,gamma, (difference(2,:)).^2)
+title('Squared differnces')
+xlabel('Gamma')
+ylabel('Difference in Utility')
+
+%Find intersection via grid search
+[Min1,Index1] = min(abs(difference(1,:)));
+[Min2,Index2] = min(abs(difference(2,:)));
+
+disp('As one can see clearly, changing y_2 changes the gamma at which both projects yield the same expected utility.');
+disp(['In the first plot, gamma = ', num2str(gamma(1,Index1)),' produced the smallest difference.'] );
+disp(['In the second plot, gamma = ', num2str(gamma(1,Index2)),' produced the smallest difference.'] );
+
+%Find intersection point numerically using Newton. This is equal to finding
+%the gamma for which the difference is equal to zero --> Root finding Problem
+
 params = [ln_eta;w;y_1;y_2(1,1)];
 f = @(x) Utility_Difference(x,params);
 y = [1 2];                                                      %initial guess
 cc =[0.1;0.1;1000];
-
-yed=nan(100,1);
-for i=1:100
-[yed(i,1),zj]=Utility_Difference(gamma(1,i),params);
-end
-figure 
-plot(gamma,yed);
-
 y_sol_1=newton(f,y(1,2),cc);
 
 
