@@ -76,18 +76,19 @@ ylabel('Difference in Utility')
 [Min2,Index2] = min(abs(difference(2,:)));
 
 disp('As one can see clearly, changing y_2 changes the gamma at which both projects yield the same expected utility.');
-disp(['In the first plot, gamma = ', num2str(gamma(1,Index1)),' produced the smallest difference.'] );
-disp(['In the second plot, gamma = ', num2str(gamma(1,Index2)),' produced the smallest difference.'] );
+fprintf(['\n In the first plot, gamma = ', num2str(gamma(1,Index1)),' produced the smallest difference. \n For a value close to this, the household will be indifferent between the two projects, given y_2 = 1.06 \n '] );
+fprintf(['\n In the second plot, gamma = ', num2str(gamma(1,Index2)),' produced the smallest difference. \n For a value close to this, the household will be indifferent between the two projects, given y_2 = 1.1 \n'] );
 
 %Find intersection point numerically using Newton. This is equal to finding
 %the gamma for which the difference is equal to zero --> Root finding Problem
 
 params = [ln_eta;w;y_1;y_2(1,1)];
 f = @(x) Utility_Difference(x,params);
-y = [1 2];                                                      %initial guess
+y = [1 2];                                      %initial guess
 cc =[0.1;0.1;1000];
 y_sol_1=newton(f,y(1,2),cc);
 
+%More to come here!!
 
 %Newton
 function [x,fx,ef,iter] = newton(f,x,cc)
