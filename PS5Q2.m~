@@ -86,9 +86,11 @@ params = [ln_eta;w;y_1;y_2(1,1)];
 f = @(x) Utility_Difference(x,params);
 y = [1 2];                                      %initial guess
 cc =[0.1;0.1;1000];                             %criteria
-y_sol_1=newton(f,y(1,1),cc);
 
-%More to come here!!
+y_sol_1=newton(f,y(1,1),cc);
+disp(y_sol_1);
+y_sol_2=newton(f,y(1,2),cc);
+disp(y_sol_2);
 
 %Newton
 function [x,fx,ef,iter] = newton(f,x,cc)
@@ -107,6 +109,7 @@ for j = 1:maxiter
     else
         x = xp;
     end
+    break
 end
 ef = 0; if D == 1; ef = 1; end
 iter = j;
@@ -117,12 +120,14 @@ function [fx,dfx] = Utility_Difference(x,y)
 
 weight=[y(1,1);y(2,1);y(3,1);y(4,1);y(5,1);y(6,1);y(7,1);y(8,1);y(9,1);y(10,1);y(11,1)];
 rv=[y(12,1);y(13,1);y(14,1);y(15,1);y(16,1);y(17,1);y(18,1);y(19,1);y(20,1);y(21,1);y(22,1)];
+
 y_1=y(23,1);
 y_2=y(24,1);
 
 fx = utility(y_1,x) - weight'*utility(exp(rv)*y_2,x);
-dfx = derivate(y_1,x)-weight'*derivate(exp(rv)*y_2,x);
-disp(size(fx));
+
+dfx = derivative(y_1,x)-weight'*derivative(exp(rv)*y_2,x);
+
 end
 
 % Declare CRRA utility function
@@ -135,11 +140,11 @@ function u= utility(x,gamma)
     end
 end
 
-function dgu = derivate(x,gamma) 
+function dgu = derivative(x,gamma) 
     if gamma == 1
-        dgu = NaN;
+          dgu = -0.00001*ones(length(x),1); %Should be zero but putting dgu = 0; yields an error
     else
-       dgu=((x.^(1-gamma)-1)./(1-gamma)-(x.^(1-gamma)-1)./(1-gamma).*(1-gamma)-1)./((1-gamma).^2);
+         dgu=((x.^(1-gamma)-1)-(x.^(1-gamma)-1).*(1-gamma)-1)./((1-gamma).^2);
     end
      
 end

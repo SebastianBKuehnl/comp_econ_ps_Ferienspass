@@ -84,11 +84,14 @@ fprintf(['\n In the second plot, gamma = ', num2str(gamma(1,Index2)),' produced 
 
 params = [ln_eta;w;y_1;y_2(1,1)];
 f = @(x) Utility_Difference(x,params);
-y = [1 2];                                      %initial guess
+y = [gamma(1,Index1) gamma(1,Index2)];          %educated guess
 cc =[0.1;0.1;1000];                             %criteria
-y_sol_1=newton(f,y(1,1),cc);
 
-%More to come here!!
+fprintf(['\n The Newton algorithm finds a root of the difference at gamma = ', num2str(newton(f,y(1,1),cc)),' , given y_2 = 1.06 \n '] );
+
+params = [ln_eta;w;y_1;y_2(1,2)];
+f = @(x) Utility_Difference(x,params);
+fprintf(['\n The Newton algorithm finds a root of the difference at gamma = ', num2str(newton(f,y(1,2),cc)),' , given y_2 = 1.1 \n '] );
 
 %Newton
 function [x,fx,ef,iter] = newton(f,x,cc)
@@ -107,6 +110,7 @@ for j = 1:maxiter
     else
         x = xp;
     end
+    break
 end
 ef = 0; if D == 1; ef = 1; end
 iter = j;
@@ -123,8 +127,7 @@ y_2=y(24,1);
 
 fx = utility(y_1,x) - weight'*utility(exp(rv)*y_2,x);
 
-dfx = derivate(y_1,x)-weight'*derivate(exp(rv)*y_2,x);
-
+dfx = derivative(y_1,x)-weight'*derivative(exp(rv)*y_2,x);
 
 end
 
@@ -134,15 +137,15 @@ function u= utility(x,gamma)
         u=log(x);
     else
         u=(x.^(1-gamma)-1)./(1-gamma);
-         disp(u);
+         
     end
 end
 
-function dgu = derivate(x,gamma) 
+function dgu = derivative(x,gamma) 
     if gamma == 1
-        dgu = 0.1; %Guess?
+          dgu = -0.00001*ones(length(x),1); %Should be zero but putting dgu = 0; yields an error
     else
-       dgu=((x.^(1-gamma)-1)-(x.^(1-gamma)-1).*(1-gamma)-1)./((1-gamma).^2);
+         dgu=((x.^(1-gamma)-1)-(x.^(1-gamma)-1).*(1-gamma)-1)./((1-gamma).^2);
     end
      
 end

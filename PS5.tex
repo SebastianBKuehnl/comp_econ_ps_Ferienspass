@@ -4,8 +4,7 @@
 \usepackage{wasysym}
 \usepackage{graphicx}
 \usepackage{float}
-
-   \usepackage[numbered,framed]{matlab-prettifier}
+\usepackage[numbered,framed]{matlab-prettifier}
 \usepackage[export]{adjustbox}
 \begin{document}
 \begin{center}
@@ -19,6 +18,9 @@
 \end{center}
 \normalsize	
 \section{Question 1}
+% \lstinputlisting[style=Matlab-editor]{PS5P1.m}
+\section{Question 2}
+\lstinputlisting[style=Matlab-editor]{PS5Q2.m}
 The approximate point where the household is indifferent between the two projects can be found via grid search. Graphically, the point where the two utility curves intersect in the point where the household becomes indifferent between the two projects. In both graphs, this point is marked by the vertical line going upwards from the horizontal line crossing through zero.
 \begin{figure}[h]
 \includegraphics[width = \textwidth, keepaspectratio]{PS5Q2Sub3_Utility.jpg} 
@@ -39,5 +41,8 @@ The first derivative with respect to $\gamma$ can then be calculated:
 &= \frac{c_t^{1- \gamma}-c_t^{1- \gamma} (1- \gamma)-1}{(1- \gamma)^2} \\  
 \end{align}
 Which can be used for the calculation of the Newton Algorithm.
-\section{Question 2}
+In the case that $ \gamma = 1 $
+\begin{align}\frac{ \partial u(c_t)}{\partial \gamma} &= \frac{ \partial \ln c_t}{\partial \gamma} = 0.\\  
+\end{align}
+
 \end{document}
