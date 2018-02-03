@@ -1,7 +1,11 @@
 function [yequi,ychebsli,ycheblec]=cheb(fct,x,m,xmin,xmax)
+% In Miranda-Fackler, in fundefn, n is the degree of approximation, which 
+% is the number of nodes (m) -1. However, there is a problem with 2 nodes, 
+% so this is also set to 2 and is kept in mind.
+c=max(m-1,2);
 
 %define function space with fundefn
-fspace=fundefn('cheb',m-1,xmin,xmax);
+fspace=fundefn('cheb',c,xmin,xmax);
 distance=(xmax-xmin)/(m-1);
 nodesequi=zeros(m,1);
 ynodesequi=zeros(m,1);
