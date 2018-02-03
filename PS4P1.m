@@ -32,7 +32,7 @@ yact=simplef(b);
 
 %plots compare with same n
 figure
-plot(b,yapequi-yact,b,yapchebsli-yact,'--r',b,yapspllin,'.b')
+plot(b,yapequi-yact,b,yapchebsli-yact,'--r',b,yapspllin-yact,'.b')
 line([-1, 1],[0, 0],'color','black')
 xlabel('x')
 ylabel('p(x)-f(x) residuals')
@@ -40,14 +40,14 @@ title('n= 5')
 legend('Chebychev, equidistant nodes','Chebychev, Chebychev nodes','Linear splines')
 
 figure
-plot(b,yapequi2-yact,b,yapchebsli2-yact,'--r',b,yapspllin2,'.b')
+plot(b,yapequi2-yact,b,yapchebsli2-yact,'--r',b,yapspllin2-yact,'.b')
 xlabel('x')
 ylabel('p(x)-f(x) residuals')
 title('n= 15')
 legend('Chebychev, equidistant nodes','Chebychev, Chebychev nodes','Linear splines')
 
 figure
-plot(b,yapequi3-yact,b,yapchebsli3-yact,'--r',b,yapspllin3,'.b')
+plot(b,yapequi3-yact,b,yapchebsli3-yact,'--r',b,yapspllin3-yact,'.b')
 xlabel('x')
 ylabel('p(x)-f(x) residuals')
 title('n= 150')
