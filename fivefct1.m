@@ -1,3 +1,3 @@
 function y= fivefct1(x)
-  y=x.^5;
+  y=x.^4;
 end

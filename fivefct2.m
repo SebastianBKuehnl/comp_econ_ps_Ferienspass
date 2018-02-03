@@ -1,3 +1,3 @@
 function y= fivefct2(x)
-  y=x.^7;
+  y=x.^6;
 end

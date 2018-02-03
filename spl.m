@@ -1,20 +1,25 @@
-function yapspl=spl(fct,x,m,a,b)
-  c=max(m-1,2);
-  fspacespl=fundefn('spli',c,-1,1,m);
-  distance=(b-a)/(m-1);
-  xspl=zeros(m,1);
-  yspl=zeros(m,1);
+function [yspllin,ysplcub]=spl(fct,x,m,xmin,xmax)
+  fspacespllin=fundefn('spli',m-1,xmin,xmax,1);  %linear splines
+  fspacesplcub=fundefn('spli',m-1,xmin,xmax,3);  %cubic splines  
+  distance=(xmax-xmin)/(m-1);
+  nodesspl=zeros(m,1);
+  ynodes=zeros(m,1);
+  %nodes
   for i=1:m
-    xspl(i)=a+(i-1)*distance; 
-    yspl(i)=fct(xspl(i));    
+    nodesspl(i)=xmin+(i-1)*distance;   %eqidistant nodes
+    ynodes(i)=fct(nodesspl(i));        %fct values at nodes
   end
 
   %calculate the matrix of basis functions
-  Bspl=funbas(fspacespl,xspl);  
-
+  Bspllin=funbas(fspacespllin,nodesspl);  
+  Bsplcub=funbas(fspacesplcub,nodesspl);
+  
   %get polynomial coefficients
-  cspl=Bspl\yspl;  
-
+  cspllin=Bspllin\ynodes;  
+  csplcub=Bsplcub\ynodes;
+  
   %approximate the function
-  yapspl=funeval(cspl,fspacespl,x);
+  yspllin=funeval(cspllin,fspacespllin,x);
+  ysplcub=funeval(csplcub,fspacesplcub,x);
+
 end
