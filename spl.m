@@ -1,4 +1,7 @@
 function [yspllin,ysplcub]=spl(fct,x,m,xmin,xmax)
+% In Miranda-Fackler, in fundefn, n is the degree of approximation, which 
+% is the number of nodes (m) -1
+
   fspacespllin=fundefn('spli',m-1,xmin,xmax,1);  %linear splines
   fspacesplcub=fundefn('spli',m-1,xmin,xmax,3);  %cubic splines  
   distance=(xmax-xmin)/(m-1);
