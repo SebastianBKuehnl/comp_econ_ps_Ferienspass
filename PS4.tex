@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
 \usepackage{MnSymbol}
 \usepackage{wasysym}
 \usepackage[toc,page]{appendix}
@@ -81,6 +81,80 @@
     The slides formula seems to be the right one. The function is symmetric and so is the approximation. The lecture formula leads to very odd (i.e. asymmetric) approximations.\\\\
     In general, it seems to be very odd that the residuals at 0 are not 0, because there should be a node and thus the residual should be zero. Maybe it is due to the toolbox calculations. Other possibilities have been thought of and precluded.
 \newpage
-	\section{Question 2}
+
+\section{Question 2}
+The first order condition of the unconstrained maximisation problem is given by
+\begin{equation*}
+u^\prime(C_0) - \mathbb{E}u^\prime(W_0 (1+r) - C_0) = 0
+\end{equation*}
+Accordingly, the optimal consumption plan obeys the Euler equation
+\begin{equation}
+u^\prime(C_0) = \mathbb{E}u^\prime(C_1) \tag{Euler EQ}
+\end{equation}
+
+\paragraph{Quadratic utility}
+Let the utility function be quadratic. Then, marginal utility is given by
+\begin{align*}
+u^\prime(C_t) &= -(C_t - \bar{C}) = \bar{C} - C_t \tag{Marginal utility}\\
+\intertext{Moreover,}
+u^{\prime\prime}(C_t) &= -1 < 0 \tag{Risk aversion}\\
+u^{\prime\prime\prime}(C_t) &= 0 \tag{Prudence}
+\end{align*}
+In order to obtain the optimal consumption, plug the marginal utility into the Euler equation
+\begin{align*}
+\bar{C} - C_0 &= \mathbb{E}(\bar{C} - C_1) \notag \\
+\bar{C} - C_0 &= \mathbb{E}(\bar{C} - (W_0 (1+r) - C_0)) \notag \\
+2 C_0 &= W_0 \mathbb{E}(1+r) \notag \\
+C_0 &= \frac{1}{2} W_0 \mathbb{E}(1+r) \notag
+\end{align*}
+Note that marginal utility is linear in $C_t$. Consequently, we could exploit linearity of the expectation operator which yields more generally
+\begin{equation*}
+\mathbb{E}(u^\prime(C_t)) = u^\prime(\mathbb{E}(C_t))
+\end{equation*}
+This is why certainty equivalence holds, i.e., the intertemporal consumption decision remains unchanged when agents are exposed to more or even less uncertainty. Indeed, expected lifetime utility is reduced by income risks (concave utility). However, the comparative statics require to look at the third derivative which indicates that agents are not influenced by the degree of income uncertainty. In case of linear marginal utility agents are not prudent. It is quite hard to judge whether this result makes economic sense, i.e., such a function provides a meaningful utility representation. There is a lot of empirical work on the willingness to insure, it is true, but prudence is a different issue. If we believe in the precautionary savings motive (which makes intuitively sense), quadratic utility is inappropriate.
+
+\paragraph{CRRA utility}
+In case of CRRA utility the three derivatives are given by
+\begin{align*}
+u^\prime(C_t) &= C_t^{-\gamma} \quad \quad \text{for any} \gamma \neq 1 \tag{Marginal utility}\\
+u^{\prime\prime}(C_t) &= -\gamma C_t^{-(\gamma+1)} < 0 \tag{Risk aversion}\\
+u^{\prime\prime\prime}(C_t) &= \gamma (1 + \gamma) C_t^{-(\gamma+2)} > 0 \tag{Prudence}
+\end{align*}
+The last two derivatives tell us that marginal utility is strictly convex. Therefore, the agent is prudent. If agents are exposed to higher income uncertainty (i.e., higher variance in r) precautionary savings reduce present consumption. These savings allow them to prepare for the possibility of more severe income states.\\
+
+Apparently, $\mathbb{E}(u^\prime(C_t)) = u^\prime(\mathbb{E}(C_t))$ will no longer hold. In order to derive the optimal consumption, plug the first derivative into the Euler equation:
+\begin{align*}
+C_0^{-\gamma} &= \mathbb{E}(C_1^{-\gamma}) \notag \\
+&= \mathbb{E}((W_0 (1+r) - C_0)^{-\gamma}) \notag \\
+\Rightarrow \quad C_0 &= \mathbb{E}\left[(W_0 (1+r) - C_0)^{-\gamma}\right]^{-\frac{1}{\gamma}}
+\end{align*}
+
+\lstinputlisting[style=Matlab-editor]{ps4ex2_new.m}
+
+\begin{figure}[h!]
+\includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig1.png}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig2.png}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\caption{Maximum percentage errors of deviation}
+\vspace{.5cm}
+\begin{tabular}{rlcc}
+\hline
+ & Setting & Example & MPE of deviation \\[.5em]
+ \hline
+ & Baseline & & 2.75 \\[1em]
+ (i) & Higher risk aversion $\gamma$ & $\gamma = 4$ & 4.22 \\[1em]
+ (ii) & Lower probability $p$ & $p = 0.20$ & 3.55 \\[1em]
+ (iii) & Higher mean-preserving interest rate spread & +0.40 & 19.17\\[1em]
+ \hline
+\end{tabular}
+\end{table}
+
+The table shows that the maximum percentage error of deviation increases for all modifications (i)-(iii) compared to the baseline model. In particular, the error of deviation significantly increases if agents face higher spreads. However, it is naturally impossible to compare these change quantitatively since we plugged in some arbitrary numbers to mimic the new setting. Different values will produce different errors, but we can safely say that errors of deviation generally increase.
 
 \end{document}
