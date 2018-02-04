@@ -176,14 +176,19 @@ which can now be rearranged
 \end{align*}
 This equation has then been approximated using Chebyshev and Spline interpolation.
 \subsubsection{Chebyshev}
-To approximate the function to the highes accuracy possible, Chebyshev node had to be created. \\
+To approximate the function to the highest accuracy possible, Chebyshev nodes had to be created. \\
 \includegraphics[width = \textwidth, keepaspectratio]{PS4Q3NODES.jpg} 
-Then, the actual approximation could be performed. \\
-\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3CHEB.jpg} 
+Then, the actual approximation could be performed. First, the unconstrained $\alpha$ has been approximated. \\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3CHEB.jpg}
+For the constrained $\alpha \in [0,1]$, we get:\\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3CHEB_constrained.jpg}
+One can clearly see the spike in inaccuracy around the kink in the true function. 
 \subsubsection{Spline Interpolation}
-The Spline Interpolation has been performed by simply using the code provided as solution for the first exercise of this Problem set. \\
+The Spline Interpolation has been performed by simply using the code provided as solution for the first exercise of this Problem set. Again, the interpolation is first performed on the unconstrained $\alpha$ and on the constrained one thereafter. \\
 \includegraphics[width = \textwidth, keepaspectratio]{PS4Q3SPLINE.jpg} 
-
+As before for the Chebyshev approximation, the approximation with linear splines for the constrained $\alpha$ differs:\\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3SPLINE_constrained.jpg}
+Again, the error increases around the point of the kink. The quality of this approximation technique could be increased by adaptive grid methods, adding nodes where the difference between the approximation is the largest (i.e. right at the point of the kink).
 \subsection{Analytical Solution of $\gamma_i$}
 The formula stated on the exercise sheet  displays that the first derivate of the objective function with respect to $\alpha_i$ evaluated at $\alpha_i=1$ has to be equal zero. That is, agent $i$'s optimal portfolio share is one or in other words, the constraint imposed just binds from above. Indeed, this expression can be rewritten in terms of its associated degree of risk aversion: \begin{align*}
 \gamma_i^*=\frac{\ln{1-p}-\ln{p}}{\ln {1+r_H}-\ln {1+r_L}}
