@@ -28,17 +28,18 @@ The output of the Gaussian quadrature is the 3X5 matrix in the first line, while
 	Row i uses function i, column j uses the j-th entry of the n-vector. Again it seems to be converging to a value as n increases, but this time there is a hump in every function (for function 3 downwards) at n=1000.\\\\
 	Comparison:\\
 	As n increases or the number of nodes, (comparing the most right column for each method), the values are very close. However, for small n or few nodes, the methods yield different approximations.
+	\newpage
 	\section{Question 2}
 	The code below can only be used after installing the CompEcon Toolbox for Matlab from \href{http://www4.ncsu.edu/~pfackler/compecon/toolbox.html}{this website}.
-	%\lstinputlisting[style=Matlab-editor]{PS5Q2.m}
+	The answer to all subquestions to this question can be found in the MATLAB output provided at the end of this section. The following paragraphs focus on the point of indifference between project one and project two.\\ \\
 	The approximate point where the household is indifferent between the two projects can be found via grid search. Graphically, the point where the two utility curves intersect in the point where the household becomes indifferent between the two projects. In both graphs, this point is marked by the vertical line going upwards from the horizontal line crossing through zero.
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\includegraphics[width = \textwidth, keepaspectratio]{PS5Q2Sub3_Utility.jpg} 
 	\end{figure}
-	Alternatively, this point can also be found where the squared difference comes close to zero. \begin{figure}[h]
+\noindent Alternatively, this point can also be found where the squared difference comes close to zero. \begin{figure}[H]
 		\includegraphics[width = \textwidth, keepaspectratio]{PS5Q2Sub3_Squared_Diff.jpg}
 	\end{figure}
-	However, for a truly satisfying result, grid search is not sufficient. The root of the difference function has to be found numerically. Here, the Newton algorithm is applied. For this, the first derivative with respect to $\gamma$ has to be computed. Since this is possible analytically, the derivation is provided below.
+\noindent However, for a truly satisfying result, grid search is not sufficient. The root of the difference function has to be found numerically. Here, the Newton algorithm is applied. For this, the first derivative with respect to $\gamma$ has to be computed. Since this is possible analytically, the derivation is provided below.
 	\begin{align}
 		u(c_t) &= \frac{c_t^{1-\gamma}-1}{1- \gamma} = \frac{c_t^{1-\gamma}}{1- \gamma} -\frac{1}{1- \gamma}\\
 		&= \frac{e^{(1-\gamma) \ln (c_t)}}{1- \gamma} -\frac{1}{1- \gamma}
