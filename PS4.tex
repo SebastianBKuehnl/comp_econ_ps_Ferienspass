@@ -139,7 +139,7 @@ C_0^{-\gamma} &= \mathbb{E}(C_1^{-\gamma}) \notag \\
 \includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig2.png}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{Maximum percentage errors of deviation}
 \vspace{.5cm}
@@ -156,5 +156,28 @@ C_0^{-\gamma} &= \mathbb{E}(C_1^{-\gamma}) \notag \\
 \end{table}
 
 The table shows that the maximum percentage error of deviation increases for all modifications (i)-(iii) compared to the baseline model. In particular, the error of deviation significantly increases if agents face higher spreads. However, it is naturally impossible to compare these change quantitatively since we plugged in some arbitrary numbers to mimic the new setting. Different values will produce different errors, but we can safely say that errors of deviation generally increase.
+
+\section{Question 3}
+
+\textbf{3.1}
+	
+Using $p:=p_l$ and therefore  $1-p=p_h$ the first order condition of agent $i$ becomes  \begin{align}\scriptstyle
+\frac{1-\gamma_i}{1-\gamma_i} \left[p\, (1+r^f+\alpha(r_L-r^f))^{-\gamma_i}(r_L-r^f) +(1-p)\, (1+r^f+\alpha(r_H-r^f))^{-\gamma_i}(r_H-r^f)\right]&= 0 \\ \Leftrightarrow E\left[ (1+r^f+\alpha(r-r^f))^{-\gamma_i}(r-r^f)\right]&=0 
+\end{align}
+
+\textbf{3.1} (Analytical Solution of $\alpha_i$)\\
+By rearranging, equation (2) yields 
+\begin{align*}
+\alpha_i^*=\frac{1+r^f}{r_H-r^f}\, \frac{p^{-\frac{1}{\gamma_i}}-(1-p)^{-\frac{1}{\gamma_i}}}{p^{-\frac{1}{\gamma_i}}+(1-p)^{-\frac{1}{\gamma_i}}}
+\end{align*}
+This equation has then been approximated using Chebyshev and Spline interpolation.
+
+\textbf{3.2} (Analytical Solution of $\gamma_i$)\\
+
+The formula stated on the exercise sheet  displays that the first derivate of the objective function with respect to $\alpha_i$ evaluated at $\alpha_i=1$ has to be equal zero. That is, agent $i$'s optimal portfolio share is one or in other words, the constraint imposed just binds from above. Indeed, this expression can be rewritten in terms of its associated degree of risk aversion: \begin{align*}
+\gamma_i^*=\frac{\ln{1-p}-\ln{p}}{\ln {1+r_H}-\ln {1+r_L}}
+\end{align*}
+
+
 
 \end{document}
