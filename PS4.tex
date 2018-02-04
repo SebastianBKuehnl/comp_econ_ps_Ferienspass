@@ -20,14 +20,7 @@
 	\end{center}
 	\normalsize	
 	\section{Question 1}
-	Chebyshev approximation using equidistant nodes and Chebyshev nodes. However, there is a difference between lecture slides 7 and the notes from te lecture, as you will see in the code: 
-	\lstinputlisting[style=Matlab-editor]{cheb.m}
-	Linear and cubic splines, also using the Miranda-Fackler toolbox:
-	\lstinputlisting[style=Matlab-editor]{spl.m}
-	The function, which was given in the task, defined for potential vector input:
-	\lstinputlisting[style=Matlab-editor]{simplef.m}
-	Main code for PS4P1:
-	\lstinputlisting[style=Matlab-editor]{PS4P1.m}
+	Chebyshev approximation using equidistant nodes and Chebyshev nodes. However, there is a difference between lecture slides 7 and the notes from the lecture, as you will see in the code provided below.
 	Plots are ordered in chronological order! (For comparison, the residuals to actual function are plotted.)\\
 	\begin{figure}[h]
 	  \begin{minipage}{0.56\textwidth}
@@ -129,14 +122,15 @@ C_0^{-\gamma} &= \mathbb{E}(C_1^{-\gamma}) \notag \\
 \Rightarrow \quad C_0 &= \mathbb{E}\left[(W_0 (1+r) - C_0)^{-\gamma}\right]^{-\frac{1}{\gamma}}
 \end{align*}
 
-\lstinputlisting[style=Matlab-editor]{ps4ex2_new.m}
 
-\begin{figure}[h!]
+
+\begin{figure}[h!] \begin{center}
 \includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig1.png}
+\end{center}
 \end{figure}
 
-\begin{figure}[h!]
-\includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig2.png}
+\begin{figure}[h!]\begin{center}
+\includegraphics[width = .8\textwidth, keepaspectratio]{ps4ex2fig2.png}\end{center}
 \end{figure}
 
 \begin{table}[H]
@@ -159,25 +153,63 @@ The table shows that the maximum percentage error of deviation increases for all
 
 \section{Question 3}
 
-\textbf{3.1}
-	
+\subsection{}	
 Using $p:=p_l$ and therefore  $1-p=p_h$ the first order condition of agent $i$ becomes  \begin{align}\scriptstyle
 \frac{1-\gamma_i}{1-\gamma_i} \left[p\, (1+r^f+\alpha(r_L-r^f))^{-\gamma_i}(r_L-r^f) +(1-p)\, (1+r^f+\alpha(r_H-r^f))^{-\gamma_i}(r_H-r^f)\right]&= 0 \\ \Leftrightarrow E\left[ (1+r^f+\alpha(r-r^f))^{-\gamma_i}(r-r^f)\right]&=0 
 \end{align}
 
-\textbf{3.1} (Analytical Solution of $\alpha_i$)\\
-By rearranging, equation (2) yields 
+\subsection{Analytical Solution of $\alpha_i$}
+The equation has then been converted into the form $\alpha ( \gamma_i )$, already using the presented calibration.
 \begin{align*}
-\alpha_i^*=\frac{1+r^f}{r_H-r^f}\, \frac{p^{-\frac{1}{\gamma_i}}-(1-p)^{-\frac{1}{\gamma_i}}}{p^{-\frac{1}{\gamma_i}}+(1-p)^{-\frac{1}{\gamma_i}}}
+E\left[ (1+r^f+\alpha(r-r^f))^{-\gamma_i}(r-r^f)\right] &= \\
+p_l \left[ (1+r^f+\alpha(r-r^f))^{-\gamma_i}(r-r^f)\right] + p_h \left[ (1+r^f+\alpha(r-r^f))^{-\gamma_i}(r-r^f)\right] &= 0\\
+0.1 (1.02 +\alpha(-0.06))^{-\gamma_i}(-0.06) + 0.9 (1.02+\alpha(0.06))^{-\gamma_i}(0.06) &= 0
+\end{align*}
+which can now be rearranged
+\begin{align*}
+0.1 (1.02 +\alpha(-0.06))^{-\gamma_i}0.06&=  0.9  (1.02+\alpha(0.06))^{-\gamma_i}(0.06) \\
+0.1 (1.02 +\alpha(-0.06))^{-\gamma_i}&=  0.9  (1.02+\alpha(0.06))^{-\gamma_i} \\
+\left(\frac{0.1}{0.9}\right)^{\frac{-1}{\gamma_i}} \left(1.02 +\alpha(-0.06)\right)&= 1.02+\alpha(0.06)\\
+9^{\frac{1}{\gamma_i}} \left(1.02 +\alpha(-0.06)\right)&= 1.02+\alpha(0.06)\\
+9^{\frac{1}{\gamma_i}} 1.02 - 1.02 &= \alpha(0.06) - \alpha(-0.06)9^{\frac{1}{\gamma_i}}\\
+\alpha &= \frac{9^{\frac{1}{\gamma_i}} 1.02 - 1.02 }{(0.06) + (0.06)9^{\frac{1}{\gamma_i}}}
 \end{align*}
 This equation has then been approximated using Chebyshev and Spline interpolation.
-\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3CHEB.fig} 
-\textbf{3.2} (Analytical Solution of $\gamma_i$)\\
+\subsubsection{Chebyshev}
+To approximate the function to the highes accuracy possible, Chebyshev node had to be created. \\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3NODES.jpg} 
+Then, the actual approximation could be performed. \\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3CHEB.jpg} 
+\subsubsection{Spline Interpolation}
+The Spline Interpolation has been performed by simply using the code provided as solution for the first exercise of this Problem set. \\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3SPLINE.jpg} 
 
+\subsection{Analytical Solution of $\gamma_i$}
 The formula stated on the exercise sheet  displays that the first derivate of the objective function with respect to $\alpha_i$ evaluated at $\alpha_i=1$ has to be equal zero. That is, agent $i$'s optimal portfolio share is one or in other words, the constraint imposed just binds from above. Indeed, this expression can be rewritten in terms of its associated degree of risk aversion: \begin{align*}
 \gamma_i^*=\frac{\ln{1-p}-\ln{p}}{\ln {1+r_H}-\ln {1+r_L}}
 \end{align*}
-
-
+\newpage
+\begin{appendices}
+\section{Code to Question 1}
+Chebyshev Approximation:
+\lstinputlisting[style=Matlab-editor]{cheb.m}
+Linear and cubic splines, also using the Miranda-Fackler toolbox:
+\lstinputlisting[style=Matlab-editor]{spl.m}
+Function to be approximated:
+\lstinputlisting[style=Matlab-editor]{simplef.m}
+Main code:
+\lstinputlisting[style=Matlab-editor]{PS4P1.m}
+\section{Code to Question 2}
+\lstinputlisting[style=Matlab-editor]{ps4ex2_new.m}
+\section{Code to Question 3}
+Main code:
+\lstinputlisting[style=Matlab-editor]{main.m}
+The function to be approximated:
+\lstinputlisting[style=Matlab-editor]{simplefQ4P3.m}
+Chebyshev:
+\lstinputlisting[style=Matlab-editor]{chebi.m}
+Spline:
+\lstinputlisting[style=Matlab-editor]{spl.m}
+\end{appendices}
 
 \end{document}
