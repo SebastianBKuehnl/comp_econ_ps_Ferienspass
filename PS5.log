@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  29 JAN 2018 21:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.7)  4 FEB 2018 22:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -574,43 +574,63 @@ e
 ))
 \c@lstlisting=\count135
 
-<PS5Q2Sub3_Utility.jpg, id=25, 1124.2pt x 843.15pt>
+<output.png, id=24, 292.6935pt x 101.178pt>
+File: output.png Graphic file (type png)
+ <use output.png>
+Package pdftex.def Info: output.png used on input line 24.
+(pdftex.def)             Requested size: 345.0pt x 119.26083pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--31
+
+ []
+
+<PS5Q2Sub3_Utility.jpg, id=27, 1124.2pt x 843.15pt>
 File: PS5Q2Sub3_Utility.jpg Graphic file (type jpg)
 
 <use PS5Q2Sub3_Utility.jpg>
-Package pdftex.def Info: PS5Q2Sub3_Utility.jpg used on input line 30.
+Package pdftex.def Info: PS5Q2Sub3_Utility.jpg used on input line 36.
 (pdftex.def)             Requested size: 345.0pt x 258.74925pt.
 
-<PS5Q2Sub3_Squared_Diff.jpg, id=26, 1124.2pt x 843.15pt>
+<PS5Q2Sub3_Squared_Diff.jpg, id=28, 1124.2pt x 843.15pt>
 File: PS5Q2Sub3_Squared_Diff.jpg Graphic file (type jpg)
 
 <use PS5Q2Sub3_Squared_Diff.jpg>
-Package pdftex.def Info: PS5Q2Sub3_Squared_Diff.jpg used on input line 33.
+Package pdftex.def Info: PS5Q2Sub3_Squared_Diff.jpg used on input line 39.
 (pdftex.def)             Requested size: 345.0pt x 258.74925pt.
-LaTeX Font Info:    Try loading font information for U+wasy on input line 35.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 41.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-)
+) [1
+
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./outpu
+t.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1
-
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./PS5Q2
-Sub3_Utility.jpg>] [2 <./PS5Q2Sub3_Squared_Diff.jpg>]
+[2 <./PS5Q2Sub3_Utility.jpg>] [3 <./PS5Q2Sub3_Squared_Diff.jpg>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 71.
- (./PS5P1.m [3] [4]
-[5]) (./spl.m
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 3.
+nput line 77.
+ (./PS5P1_new.m [4]
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 25.
+
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-))
-(./fivefct1.m) (./fivefct2.m) [6] (./fivefct3.m) (./integral_dx_montecarlo.m)
-(./lgwt.m [7] [8]) (./PS5Q2.m [9] [10] [11] [12])
+)) (./cheb.m
+[5]) [6] (./fivefct1.m) (./fivefct2.m) (./fivefct3.m) (./PS5Q2.m [7] [8]
+[9] [10])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 88.
- [13]
+ [11]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 88.
  (./PS5.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
@@ -620,13 +640,13 @@ Package rerunfilecheck Info: File `PS5.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 88.
  ) 
 Here is how much of TeX's memory you used:
- 11101 strings out of 492995
- 158623 string characters out of 6132704
- 439948 words of memory out of 5000000
- 14072 multiletter control sequences out of 15000+600000
+ 10938 strings out of 492995
+ 156532 string characters out of 6132704
+ 427249 words of memory out of 5000000
+ 14040 multiletter control sequences out of 15000+600000
  12430 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,10n,120p,469b,1953s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,10n,120p,470b,1971s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{/u
 sr/local/texlive/2017/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}{/usr/l
@@ -641,10 +661,10 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
 2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on PS5.pdf (13 pages, 276586 bytes).
+Output written on PS5.pdf (11 pages, 275266 bytes).
 PDF statistics:
- 632 PDF objects out of 1000 (max. 8388607)
- 599 compressed objects within 6 object streams
- 423 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 477 PDF objects out of 1000 (max. 8388607)
+ 445 compressed objects within 5 object streams
+ 297 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
