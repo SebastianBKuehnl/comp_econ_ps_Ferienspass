@@ -100,3 +100,54 @@ ylabel("Optimal \alpha")
 
 end
 
+% Adjust grid for Spline Interploation:
+[V, I]=max(difference_spline);
+alphaspline_adapt=spladapt(f_const,b,n,xmin,xmax,I,b);
+difference_spline_adapt= abs(alphaspline_adapt - real_alpha);
+
+figure
+subplot(2,1,1)
+plot(b,alphaspline_adapt,b,real_alpha)
+title("Spline Approximated with adjusted grid and True Values")
+line([min(b),max(b)],[0,0],'Color','red','LineStyle','--')
+line([min(b),max(b)],[1,1],'Color','red','LineStyle','--')
+legend("Spline Approximation","True Values","\alpha Bound",'location','best')
+xlabel("\gamma")
+ylabel("Optimal \alpha")
+subplot(2,1,2)
+plot(b,difference_spline_adapt)
+title("Difference in Absolute Terms (Spline)")
+xlabel("\gamma")
+ylabel("Optimal \alpha")
+
+function [yspllin,ysplcub]=spladapt(fct,x,m,xmin,xmax,I,b)
+% In Miranda-Fackler, in fundefn, n is the degree of approximation, which 
+% is the number of nodes (m) -1
+
+  fspacespllin=fundefn('spli',m-1,xmin,xmax,1);  %linear splines
+  fspacesplcub=fundefn('spli',m-1,xmin,xmax,3);  %cubic splines  
+  %distance=(xmax-xmin)/(m-1);
+  nodesspl=zeros(m,1);
+  ynodes=zeros(m,1);
+  %nodes
+  distance_nodes=round((xmin-b(I(1,1),1))/(xmax-xmin)*(m-1),0);
+  distance=(xmin-b(I(1,1),1))/distance_nodes;
+  
+  for i=1:m
+    nodesspl(i)=xmin+(i-1)*distance;   %eqidistant nodes
+    ynodes(i)=fct(nodesspl(i));        %fct values at nodes
+  end
+  
+  %calculate the matrix of basis functions
+  Bspllin=funbas(fspacespllin,nodesspl);  
+  Bsplcub=funbas(fspacesplcub,nodesspl);
+  
+  %get polynomial coefficients
+  cspllin=Bspllin\ynodes;  
+  csplcub=Bsplcub\ynodes;
+  
+  %approximate the function
+  yspllin=funeval(cspllin,fspacespllin,x);
+  ysplcub=funeval(csplcub,fspacesplcub,x);
+
+end

@@ -189,6 +189,8 @@ The Spline Interpolation has been performed by simply using the code provided as
 As before for the Chebyshev approximation, the approximation with linear splines for the constrained $\alpha$ differs:\\
 \includegraphics[width = \textwidth, keepaspectratio]{PS4Q3SPLINE_constrained.jpg}
 Again, the error increases around the point of the kink. The quality of this approximation technique could be increased by adaptive grid methods, adding nodes where the difference between the approximation is the largest (i.e. right at the point of the kink).
+This has been tried out but did not fully work out as planned. However, an improvement can be seen from using an adjusted grid:\\
+\includegraphics[width = \textwidth, keepaspectratio]{PS4Q3SPLINE_constrained_adjusted.jpg}
 \subsection{Analytical Solution of $\gamma_i$}
 The formula stated on the exercise sheet  displays that the first derivate of the objective function with respect to $\alpha_i$ evaluated at $\alpha_i=1$ has to be equal zero. That is, agent $i$'s optimal portfolio share is one or in other words, the constraint imposed just binds from above. Indeed, this expression can be rewritten in terms of its associated degree of risk aversion: \begin{align*}
 \gamma_i^*=\frac{\ln{1-p}-\ln{p}}{\ln {1+r_H}-\ln {1+r_L}}
